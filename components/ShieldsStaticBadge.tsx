@@ -1,14 +1,27 @@
-import { FC } from "react";
-import { BadgeStyle, StaticBadge, staticBadge } from "../utils/badge";
+import { forwardRef, SyntheticEvent } from "react";
+import { StaticBadge, staticBadge } from "../utils/badge";
 
-export interface ShieldsBadgeProps extends BadgeStyle {
-  label: string;
-  message?: string;
-  color: string;
+export interface ShieldsBadgeProps extends StaticBadge {
+  onLoad?(e: SyntheticEvent): void;
+  onRequest?({ url: string }): void;
 }
 
-export const ShieldsStaticBadge: FC<ShieldsBadgeProps> = (props) => {
-  const { label = "", message = "", color = "blue", ...styles } = props;
+export const ShieldsStaticBadge = forwardRef<
+  HTMLImageElement,
+  ShieldsBadgeProps
+>((props, ref) => {
+  let {
+    label = "",
+    message = "",
+    color = "blue",
+    onLoad,
+    onRequest,
+    ...styles
+  } = props;
+
+  if (onLoad === undefined) {
+    onLoad = () => {};
+  }
 
   const badge: StaticBadge = {
     label,
@@ -17,10 +30,11 @@ export const ShieldsStaticBadge: FC<ShieldsBadgeProps> = (props) => {
     ...styles,
   };
 
-  return (
-    <div>
-      {/* <img src={staticBadge({ label, message, color })} /> */}
-      <img src={staticBadge(badge)} />
-    </div>
-  );
-};
+  const badgeURL = staticBadge(badge);
+
+  if (onRequest && onRequest instanceof Function) {
+    onRequest({ url: badgeURL });
+  }
+
+  return <img ref={ref} src={badgeURL} onLoad={onLoad} />;
+});
