@@ -2,7 +2,7 @@ import { Meta, Story } from "@storybook/react/types-6-0";
 import { SelectStyleType, SelectStyleTypeProps } from "./SelectStyleType";
 
 export default {
-  title: "Select Style Type",
+  title: "Panels/Style Type",
   component: SelectStyleType,
 } as Meta;
 

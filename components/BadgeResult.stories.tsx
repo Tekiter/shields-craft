@@ -27,7 +27,7 @@ const Template: Story<BadgeResultProps> = (args) => {
   return <BadgeResult badge={sampleBadge} {...args} />;
 };
 
-export const Grid = Template.bind({});
-Grid.args = {
+export const Basic = Template.bind({});
+Basic.args = {
   url: "https://img.shields.io/badge/shields.io-badge-blue?style=flat",
 } as BadgeResultProps;

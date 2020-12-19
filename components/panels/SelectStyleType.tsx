@@ -1,26 +1,27 @@
 import { badgeStyleList, BadgeStylesTypes } from "@/utils/badge";
 import React, { forwardRef, useCallback, useState } from "react";
-import { Menu } from "semantic-ui-react";
+import { Header, Menu, Segment } from "semantic-ui-react";
 
 export interface SelectStyleTypeProps {
   vertical?: boolean;
-  onSelect?(style: BadgeStylesTypes): void;
+  onChange?(e: { style: BadgeStylesTypes }): void;
 }
 
 export const SelectStyleType = forwardRef<HTMLDivElement, SelectStyleTypeProps>(
   (props, ref) => {
-    const { vertical = false, onSelect } = props;
+    const { vertical = false, onChange } = props;
 
     const [selected, setSelected] = useState(badgeStyleList[0]);
 
     const handleClick = useCallback((_, { name }) => {
       setSelected(name);
-      if (onSelect && typeof onSelect === "function") {
-        onSelect(name);
+      if (onChange && typeof onChange === "function") {
+        onChange({ style: name });
       }
     }, []);
     return (
-      <div ref={ref}>
+      <Segment ref={ref}>
+        <Header as="h3">Style</Header>
         <Menu vertical={vertical}>
           {badgeStyleList.map((key) => (
             <Menu.Item
@@ -33,7 +34,7 @@ export const SelectStyleType = forwardRef<HTMLDivElement, SelectStyleTypeProps>(
             </Menu.Item>
           ))}
         </Menu>
-      </div>
+      </Segment>
     );
   }
 );

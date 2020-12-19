@@ -1,26 +1,20 @@
 import { forwardRef } from "react";
-import { Input } from "semantic-ui-react";
+import { Header, Segment } from "semantic-ui-react";
+import { ExportBadge } from "./ExportResult";
 
 export interface BadgeResultProps {
   badge: any;
   url: string;
+  alt?: string;
 }
 
 export const BadgeResult = forwardRef<any, BadgeResultProps>((props, ref) => {
-  const { badge = <></> } = props;
+  const { url = "", badge = <></>, alt = "" } = props;
+
   return (
-    <div>
-      <h1>Result</h1>
-      <p>{badge}</p>
-      <Input
-        action={{
-          color: "teal",
-          labelPosition: "right",
-          icon: "copy",
-          content: "Copy",
-        }}
-        value={props.url}
-      />
-    </div>
+    <Segment ref={ref}>
+      <Header>Crafted Badge </Header>
+      <Segment textAlign="center">{badge}</Segment>
+    </Segment>
   );
 });
