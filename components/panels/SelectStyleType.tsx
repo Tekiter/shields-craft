@@ -3,7 +3,7 @@ import React, { forwardRef, useCallback, useState } from "react";
 import { Menu } from "semantic-ui-react";
 
 export interface SelectStyleTypeProps {
-  vertical: boolean;
+  vertical?: boolean;
   onSelect?(style: BadgeStylesTypes): void;
 }
 
