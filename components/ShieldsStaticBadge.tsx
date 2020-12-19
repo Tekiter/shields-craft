@@ -1,6 +1,5 @@
 import { forwardRef, SyntheticEvent } from "react";
-import { StaticBadge, staticBadge } from "../utils/badge";
-
+import { StaticBadge, staticBadge } from "@/utils/badge";
 export interface ShieldsBadgeProps extends StaticBadge {
   onLoad?(e: SyntheticEvent): void;
   onRequest?({ url: string }): void;
