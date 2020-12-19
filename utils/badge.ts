@@ -1,9 +1,12 @@
-export type BadgeStylesTypes =
-  | "plastic"
-  | "flat"
-  | "flat-square"
-  | "for-the-badge"
-  | "social";
+export const badgeStyleList = [
+  "plastic",
+  "flat",
+  "flat-square",
+  "for-the-badge",
+  "social",
+] as const;
+
+export type BadgeStylesTypes = typeof badgeStyleList[number];
 
 export interface BadgeStyle {
   style?: BadgeStylesTypes;
