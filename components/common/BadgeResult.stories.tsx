@@ -3,31 +3,30 @@ import { BadgeResult, BadgeResultProps } from "./BadgeResult";
 import { ShieldsStaticBadge } from "@/components/staticBadge/ShieldsStaticBadge";
 
 export default {
-  title: "Common/Badge Result",
-  component: BadgeResult,
-  argTypes: {
-    badge: {
-      table: {
-        disable: true,
-      },
-    },
-    url: {
-      table: {
-        disable: true,
-      },
-    },
-  },
+    title: "Common/Badge Result",
+    component: BadgeResult,
+    argTypes: {
+        badge: {
+            table: {
+                disable: true
+            }
+        },
+        url: {
+            table: {
+                disable: true
+            }
+        }
+    }
 } as Meta;
 
-const sampleBadge = (
-  <ShieldsStaticBadge label="shield.io" message="badge" color="blue" />
-);
+const sampleBadge = <ShieldsStaticBadge label="shield.io" message="badge" color="blue" />;
 
 const Template: Story<BadgeResultProps> = (args) => {
-  return <BadgeResult badge={sampleBadge} {...args} />;
+    return <BadgeResult {...args} />;
 };
 
 export const Basic = Template.bind({});
 Basic.args = {
-  url: "https://img.shields.io/badge/shields.io-badge-blue?style=flat",
+    url: "https://img.shields.io/badge/shields.io-badge-blue?style=flat",
+    badge: () => sampleBadge
 } as BadgeResultProps;

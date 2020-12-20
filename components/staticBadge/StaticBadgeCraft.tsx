@@ -8,46 +8,42 @@ import { ShieldsStaticBadge } from "./ShieldsStaticBadge";
 import { ExportBadge } from "../common/ExportResult";
 
 export interface StaticBadgeCraftProps {
-  onChange?(style: StaticBadge): void;
+    onChange?(style: StaticBadge): void;
 }
 
-export const StaticBadgeCraft = forwardRef<any, StaticBadgeCraftProps>(
-  (props, ref) => {
+export const StaticBadgeCraft = forwardRef<HTMLElement, StaticBadgeCraftProps>((props, ref) => {
     const { onChange = () => {} } = props;
 
     const [badge, setBadge] = useState<StaticBadge>(() => ({
-      label: "shields.io",
-      message: "badge",
-      color: "blue",
+        label: "shields.io",
+        message: "badge",
+        color: "blue"
     }));
 
     const handleChange = (values: object) => {
-      onChange({ ...badge, ...values });
-      setBadge((badge) => ({ ...badge, ...values }));
+        onChange({ ...badge, ...values });
+        setBadge((badge) => ({ ...badge, ...values }));
     };
 
     return (
-      <Grid ref={ref} divided columns={2}>
-        <Grid.Row>
-          <Grid.Column>
-            <StaticContent onChange={(value) => handleChange(value)} />
-          </Grid.Column>
-          <Grid.Column>
-            <SelectStyleType onChange={(value) => handleChange(value)} />
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Column>
-            <BadgeResult badge={() => <ShieldsStaticBadge {...badge} />} />
-          </Grid.Column>
-          <Grid.Column>
-            <ExportBadge
-              url={staticBadge(badge)}
-              alt={badge.label + " " + badge.message}
-            />
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+        <Grid ref={ref} divided columns={2}>
+            <Grid.Row>
+                <Grid.Column>
+                    <StaticContent onChange={(value) => handleChange(value)} />
+                </Grid.Column>
+                <Grid.Column>
+                    <SelectStyleType onChange={(value) => handleChange(value)} />
+                </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+                <Grid.Column>
+                    <BadgeResult badge={() => <ShieldsStaticBadge {...badge} />} />
+                </Grid.Column>
+                <Grid.Column>
+                    <ExportBadge url={staticBadge(badge)} alt={badge.label + " " + badge.message} />
+                </Grid.Column>
+            </Grid.Row>
+        </Grid>
     );
-  }
-);
+});
+StaticBadgeCraft.displayName = "StaticBadgeCraft";
