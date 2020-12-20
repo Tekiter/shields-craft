@@ -3,7 +3,7 @@ import { BadgeResult, BadgeResultProps } from "./BadgeResult";
 import { ShieldsStaticBadge } from "./ShieldsStaticBadge";
 
 export default {
-  title: "Static Badge Result",
+  title: "Static Badge/Result",
   component: BadgeResult,
   argTypes: {
     badge: {

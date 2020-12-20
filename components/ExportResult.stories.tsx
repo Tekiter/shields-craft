@@ -2,7 +2,7 @@ import { Meta, Story } from "@storybook/react/types-6-0";
 import { ExportBadge, ExportBadgeProps } from "./ExportResult";
 
 export default {
-  title: "Export Badge",
+  title: "Common/Export Badge",
   component: ExportBadge,
 } as Meta;
 

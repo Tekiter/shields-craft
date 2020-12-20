@@ -3,7 +3,7 @@ import { StaticBadge } from "../utils/badge";
 import { ShieldsStaticBadge, ShieldsBadgeProps } from "./ShieldsStaticBadge";
 
 export default {
-  title: "Shields.io Static Badge",
+  title: "Static Badge/Shields.io Static Badge",
   component: ShieldsStaticBadge,
   argTypes: {
     color: { control: "color" },

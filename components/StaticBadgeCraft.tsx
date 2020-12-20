@@ -18,20 +18,14 @@ export const StaticBadgeCraft = forwardRef<any, StaticBadgeCraftProps>(
       color: "blue",
     });
 
-    const handleContent = ({ label, message }) => {
-      const newBadge = { ...badge, label, message };
-      setBadge(newBadge);
-      onChange(newBadge);
-    };
-
-    const handleChange = (values) => {
+    const handleChange = (values: object) => {
       const newBadge = { ...badge, ...values };
       setBadge(newBadge);
       onChange(newBadge);
     };
 
     return (
-      <Grid divided columns={2}>
+      <Grid ref={ref} divided columns={2}>
         <Grid.Column>
           <StaticContent onChange={handleChange} />
         </Grid.Column>
