@@ -1,5 +1,5 @@
 import { ChangeEvent, forwardRef, useCallback, useState } from "react";
-import { Form, Header, Input, Segment } from "semantic-ui-react";
+import { Form, Header, Segment } from "semantic-ui-react";
 
 export interface StaticContentProps {
   onChange?(e: { label: string; message: string }): void;
@@ -17,7 +17,7 @@ export const StaticContent = forwardRef<any, StaticContentProps>(
           onChange({ label: e.target.value, message });
         }
       },
-      [label]
+      [label, message]
     );
 
     const handleMessage = useCallback(
@@ -27,7 +27,7 @@ export const StaticContent = forwardRef<any, StaticContentProps>(
           onChange({ label, message: e.target.value });
         }
       },
-      [message]
+      [label, message]
     );
 
     return (

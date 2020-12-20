@@ -1,8 +1,8 @@
 export const badgeStyleList = [
-  "plastic",
   "flat",
   "flat-square",
   "for-the-badge",
+  "plastic",
   "social",
 ] as const;
 
