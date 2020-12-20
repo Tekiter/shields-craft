@@ -1,6 +1,5 @@
 import { forwardRef } from "react";
 import { Header, Segment } from "semantic-ui-react";
-import { ExportBadge } from "./ExportResult";
 
 export interface BadgeResultProps {
   badge: any;
