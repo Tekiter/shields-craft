@@ -47,6 +47,10 @@ export const StaticContent = forwardRef<Element, StaticContentProps>(({ onChange
                         onChange={handleMessage}
                     />
                 </Form.Group>
+                <Form.Group widths="equal">
+                    <Form.Field></Form.Field>
+                    <Form.Field></Form.Field>
+                </Form.Group>
             </Form>
         </Segment>
     );
