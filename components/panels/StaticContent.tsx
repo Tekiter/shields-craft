@@ -1,10 +1,15 @@
 import { ChangeEvent, forwardRef, useCallback, useState } from "react";
-import { Form, Header, Segment } from "semantic-ui-react";
+import { Grid, Header, Input, Segment } from "semantic-ui-react";
+import { BadgeColorPicker } from "../common/BadgeColorPicker";
+
+type paramTypes = "label" | "message" | "labelColor" | "color";
 
 export interface StaticContentProps {
-    onChange?(e: { label: string; message: string }): void;
+    onChange?(e: Partial<Record<paramTypes, string>>): void;
     label?: string;
     message?: string;
+    color?: string;
+    labelColor?: string;
 }
 
 export const StaticContent = forwardRef<Element, StaticContentProps>(
@@ -32,28 +37,51 @@ export const StaticContent = forwardRef<Element, StaticContentProps>(
             [label, message]
         );
 
+        const handleColor = (type: string) => (color: string) => {
+            if (onChange && typeof onChange === "function") {
+                if (color.startsWith("#")) {
+                    color = color.substr(1);
+                }
+                onChange({ [type]: color });
+            }
+        };
+
         return (
             <Segment ref={ref} basic>
-                <Form>
-                    <Form.Group widths="equal">
-                        <Form.Input
-                            fluid
-                            label="Label (left side)"
-                            value={props.label}
-                            onChange={handleLabel}
-                        />
-                        <Form.Input
-                            fluid
-                            label="Message (right side)"
-                            value={props.message}
-                            onChange={handleMessage}
-                        />
-                    </Form.Group>
-                    <Form.Group widths="equal">
-                        <Form.Field></Form.Field>
-                        <Form.Field></Form.Field>
-                    </Form.Group>
-                </Form>
+                <Grid>
+                    <Grid.Row>
+                        <Grid.Column width={16}>
+                            <Header as="h5">Label (left side)</Header>
+                        </Grid.Column>
+                        <Grid.Column tablet={16} computer={8}>
+                            <Input fluid value={props.label} onChange={handleLabel}></Input>
+                        </Grid.Column>
+                        <Grid.Column tablet={16} computer={8}>
+                            <BadgeColorPicker
+                                color={props.labelColor}
+                                onChange={handleColor("labelColor")}
+                                fluid>
+                                Color
+                            </BadgeColorPicker>
+                        </Grid.Column>
+                    </Grid.Row>
+                    <Grid.Row>
+                        <Grid.Column width={16}>
+                            <Header as="h5">Message (right side)</Header>
+                        </Grid.Column>
+                        <Grid.Column tablet={16} computer={8}>
+                            <Input fluid value={props.message} onChange={handleMessage}></Input>
+                        </Grid.Column>
+                        <Grid.Column tablet={16} computer={8}>
+                            <BadgeColorPicker
+                                color={props.color}
+                                onChange={handleColor("color")}
+                                fluid>
+                                Color
+                            </BadgeColorPicker>
+                        </Grid.Column>
+                    </Grid.Row>
+                </Grid>
             </Segment>
         );
     }

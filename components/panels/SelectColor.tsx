@@ -22,7 +22,7 @@ export const SelectColor: FC<SelectColorProps> = (props) => {
 
     return (
         <Segment basic>
-            <Grid columns={2}>
+            <Grid columns={2} stackable>
                 <Grid.Column>
                     <BadgeColorPicker
                         color={props.labelColor}

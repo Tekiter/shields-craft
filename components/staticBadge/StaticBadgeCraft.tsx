@@ -26,13 +26,8 @@ export const StaticBadgeCraft = forwardRef<HTMLElement, StaticBadgeCraftProps>((
         setBadge((badge) => ({ ...badge, ...values }));
     };
 
-    const handleColorChange = (values: object) => {
-        onChange({ ...badge, ...values });
-        setBadge((badge) => ({ ...badge, ...values }));
-    };
-
     return (
-        <Grid ref={ref} divided columns={2}>
+        <Grid ref={ref} columns={2} stackable>
             <Grid.Row>
                 <Grid.Column>
                     <Segment>
@@ -40,6 +35,8 @@ export const StaticBadgeCraft = forwardRef<HTMLElement, StaticBadgeCraftProps>((
                             onChange={(value) => handleChange(value)}
                             label={badge.label}
                             message={badge.message}
+                            color={badge.color}
+                            labelColor={badge.labelColor}
                         />
                     </Segment>
                 </Grid.Column>
@@ -48,15 +45,6 @@ export const StaticBadgeCraft = forwardRef<HTMLElement, StaticBadgeCraftProps>((
                         <SelectStyleType
                             onChange={(value) => handleChange(value)}
                             style={badge.style}
-                        />
-                    </Segment>
-                </Grid.Column>
-                <Grid.Column>
-                    <Segment>
-                        <SelectColor
-                            color={badge.color}
-                            labelColor={badge.labelColor}
-                            onChange={(value) => handleColorChange(value)}
                         />
                     </Segment>
                 </Grid.Column>
