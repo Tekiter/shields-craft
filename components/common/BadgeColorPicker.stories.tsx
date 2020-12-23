@@ -1,5 +1,5 @@
 import { Meta, Story } from "@storybook/react/types-6-0";
-import { BadgeColorPicker, BadgeColorPickerProps } from "./ColorPicker";
+import { BadgeColorPicker, BadgeColorPickerProps } from "./BadgeColorPicker";
 
 export default {
     title: "Common/Color Picker",
@@ -12,4 +12,6 @@ const Template: Story<BadgeColorPickerProps> = (args) => {
 };
 
 export const Basic = Template.bind({});
-Basic.args = {} as BadgeColorPickerProps;
+Basic.args = {
+    children: "Select Color"
+} as BadgeColorPickerProps;

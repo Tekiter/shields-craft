@@ -18,4 +18,8 @@ module.exports = {
 
     return config;
   },
+  babel: async (options) => ({
+    ...options,
+    plugins: [...options.plugins, "styled-jsx/babel"]
+  })
 };

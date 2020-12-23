@@ -3,9 +3,10 @@ import { Grid, Segment } from "semantic-ui-react";
 import { SelectStyleType } from "@/components/panels/SelectStyleType";
 import { StaticContent } from "@/components/panels/StaticContent";
 import { staticBadge, StaticBadge } from "@/utils/badge";
-import { BadgeResult } from "../common/BadgeResult";
+import { BadgeResult } from "@/components/common/BadgeResult";
 import { ShieldsStaticBadge } from "./ShieldsStaticBadge";
-import { ExportBadge } from "../common/ExportResult";
+import { ExportBadge } from "@/components/common/ExportResult";
+import { SelectColor } from "@/components/panels/SelectColor";
 
 export interface StaticBadgeCraftProps {
     onChange?(style: StaticBadge): void;
@@ -17,10 +18,15 @@ export const StaticBadgeCraft = forwardRef<HTMLElement, StaticBadgeCraftProps>((
     const [badge, setBadge] = useState<StaticBadge>(() => ({
         label: "shields.io",
         message: "badge",
-        color: "blue"
+        color: "407DBF"
     }));
 
     const handleChange = (values: object) => {
+        onChange({ ...badge, ...values });
+        setBadge((badge) => ({ ...badge, ...values }));
+    };
+
+    const handleColorChange = (values: object) => {
         onChange({ ...badge, ...values });
         setBadge((badge) => ({ ...badge, ...values }));
     };
@@ -42,6 +48,15 @@ export const StaticBadgeCraft = forwardRef<HTMLElement, StaticBadgeCraftProps>((
                         <SelectStyleType
                             onChange={(value) => handleChange(value)}
                             style={badge.style}
+                        />
+                    </Segment>
+                </Grid.Column>
+                <Grid.Column>
+                    <Segment>
+                        <SelectColor
+                            color={badge.color}
+                            labelColor={badge.labelColor}
+                            onChange={(value) => handleColorChange(value)}
                         />
                     </Segment>
                 </Grid.Column>

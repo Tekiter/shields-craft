@@ -1,11 +1,37 @@
-import { FC, useEffect, useState } from "react";
+import { FC, ReactNode, useEffect, useState } from "react";
 import { ColorChangeHandler, SketchPicker, SliderPicker } from "react-color";
-import { Button, Popup, Tab } from "semantic-ui-react";
+import { Button, Popup, Tab, ButtonProps } from "semantic-ui-react";
 import Color from "color";
+
+interface ColoredButtonProps extends Omit<ButtonProps, "color"> {
+    color?: string;
+}
+
+const ColoredButton: FC<ColoredButtonProps> = (props) => {
+    const { color, ...btnProps } = props;
+    return (
+        <span className="root">
+            <Button className="colorbtn" {...btnProps}>
+                <span
+                    className="clbtn"
+                    style={{ color: Color(color).isDark() ? "white" : "black" }}>
+                    {props.children}
+                </span>
+            </Button>
+            <style jsx>{`
+                .root :global(.colorbtn) {
+                    background-color: ${color} !important;
+                }
+            `}</style>
+        </span>
+    );
+};
 
 export interface BadgeColorPickerProps {
     onChange?(color: string): void;
     color?: string;
+    fluid?: boolean;
+    children?: ReactNode;
 }
 
 export const BadgeColorPicker: FC<BadgeColorPickerProps> = (props: BadgeColorPickerProps) => {
@@ -35,14 +61,13 @@ export const BadgeColorPicker: FC<BadgeColorPickerProps> = (props: BadgeColorPic
         {
             menuItem: "Simple",
             render: () => (
-                <>
+                <div>
                     <SliderPicker
                         className="sliderpicker"
                         color={color}
                         onChange={handleChange}
-                        onChangeComplete={populateChange}
-                    />
-                    <style jsx>
+                        onChangeComplete={populateChange}></SliderPicker>
+                    <style jsx global>
                         {`
                             .sliderpicker {
                                 min-width: 300px;
@@ -50,7 +75,7 @@ export const BadgeColorPicker: FC<BadgeColorPickerProps> = (props: BadgeColorPic
                             }
                         `}
                     </style>
-                </>
+                </div>
             )
         },
         {
@@ -70,22 +95,17 @@ export const BadgeColorPicker: FC<BadgeColorPickerProps> = (props: BadgeColorPic
         <div className="root">
             <Popup
                 trigger={
-                    <Button className="btn">
-                        <span style={{ color: Color(color).isDark() ? "white" : "black" }}>
-                            Choose Color
-                        </span>
-                    </Button>
+                    <ColoredButton color={color} fluid={props.fluid}>
+                        {props.children}
+                    </ColoredButton>
                 }
                 on="click"
+                position="bottom left"
                 hideOnScroll>
                 <Tab panes={panes} />
             </Popup>
 
-            <style jsx>{`
-                .btn {
-                    background-color: ${color} !important;
-                }
-
+            <style jsx global>{`
                 .root {
                     min-width: 200px;
                 }
