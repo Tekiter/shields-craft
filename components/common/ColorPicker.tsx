@@ -1,10 +1,11 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { ColorChangeHandler, SketchPicker, SliderPicker } from "react-color";
 import { Button, Popup, Tab } from "semantic-ui-react";
 import Color from "color";
 
 export interface BadgeColorPickerProps {
     onChange?(color: string): void;
+    color?: string;
 }
 
 export const BadgeColorPicker: FC<BadgeColorPickerProps> = (props: BadgeColorPickerProps) => {
@@ -20,6 +21,15 @@ export const BadgeColorPicker: FC<BadgeColorPickerProps> = (props: BadgeColorPic
             props.onChange(color.hex);
         }
     };
+
+    useEffect(() => {
+        try {
+            const col = Color(props.color);
+            setColor(() => col.hex());
+        } catch (_) {
+            //
+        }
+    }, [props.color]);
 
     const panes = [
         {

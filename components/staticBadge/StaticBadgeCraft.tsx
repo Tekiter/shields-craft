@@ -29,10 +29,17 @@ export const StaticBadgeCraft = forwardRef<HTMLElement, StaticBadgeCraftProps>((
         <Grid ref={ref} divided columns={2}>
             <Grid.Row>
                 <Grid.Column>
-                    <StaticContent onChange={(value) => handleChange(value)} />
+                    <StaticContent
+                        onChange={(value) => handleChange(value)}
+                        label={badge.label}
+                        message={badge.message}
+                    />
                 </Grid.Column>
                 <Grid.Column>
-                    <SelectStyleType onChange={(value) => handleChange(value)} />
+                    <SelectStyleType
+                        onChange={(value) => handleChange(value)}
+                        style={badge.style}
+                    />
                 </Grid.Column>
             </Grid.Row>
             <Grid.Row>
