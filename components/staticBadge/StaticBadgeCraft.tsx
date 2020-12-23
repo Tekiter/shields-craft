@@ -1,5 +1,5 @@
 import { forwardRef, useState } from "react";
-import { Grid } from "semantic-ui-react";
+import { Grid, Segment } from "semantic-ui-react";
 import { SelectStyleType } from "@/components/panels/SelectStyleType";
 import { StaticContent } from "@/components/panels/StaticContent";
 import { staticBadge, StaticBadge } from "@/utils/badge";
@@ -29,17 +29,21 @@ export const StaticBadgeCraft = forwardRef<HTMLElement, StaticBadgeCraftProps>((
         <Grid ref={ref} divided columns={2}>
             <Grid.Row>
                 <Grid.Column>
-                    <StaticContent
-                        onChange={(value) => handleChange(value)}
-                        label={badge.label}
-                        message={badge.message}
-                    />
+                    <Segment>
+                        <StaticContent
+                            onChange={(value) => handleChange(value)}
+                            label={badge.label}
+                            message={badge.message}
+                        />
+                    </Segment>
                 </Grid.Column>
                 <Grid.Column>
-                    <SelectStyleType
-                        onChange={(value) => handleChange(value)}
-                        style={badge.style}
-                    />
+                    <Segment>
+                        <SelectStyleType
+                            onChange={(value) => handleChange(value)}
+                            style={badge.style}
+                        />
+                    </Segment>
                 </Grid.Column>
             </Grid.Row>
             <Grid.Row>

@@ -29,8 +29,7 @@ export const SelectStyleType = forwardRef<HTMLDivElement, SelectStyleTypeProps>(
     }, []);
 
     return (
-        <Segment ref={ref}>
-            <Header as="h3">Style</Header>
+        <Segment ref={ref} basic>
             <Menu vertical={vertical}>
                 {badgeStyleList.map((key) => (
                     <Menu.Item

@@ -33,8 +33,7 @@ export const StaticContent = forwardRef<Element, StaticContentProps>(
         );
 
         return (
-            <Segment ref={ref}>
-                <Header as="h3">Content</Header>
+            <Segment ref={ref} basic>
                 <Form>
                     <Form.Group widths="equal">
                         <Form.Input
