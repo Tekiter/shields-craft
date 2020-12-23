@@ -1,6 +1,7 @@
 import { FC, useState } from "react";
 import { ColorChangeHandler, SketchPicker, SliderPicker } from "react-color";
 import { Button, Popup, Tab } from "semantic-ui-react";
+import Color from "color";
 
 export interface BadgeColorPickerProps {
     onChange?(color: string): void;
@@ -11,6 +12,10 @@ export const BadgeColorPicker: FC<BadgeColorPickerProps> = (props: BadgeColorPic
 
     const handleChange: ColorChangeHandler = (color) => {
         setColor(color.hex);
+    };
+
+    const populateChange: ColorChangeHandler = (color, evt) => {
+        handleChange(color, evt);
         if (props.onChange && typeof props.onChange === "function") {
             props.onChange(color.hex);
         }
@@ -24,7 +29,8 @@ export const BadgeColorPicker: FC<BadgeColorPickerProps> = (props: BadgeColorPic
                     <SliderPicker
                         className="sliderpicker"
                         color={color}
-                        onChangeComplete={handleChange}
+                        onChange={handleChange}
+                        onChangeComplete={populateChange}
                     />
                     <style jsx>
                         {`
@@ -40,14 +46,28 @@ export const BadgeColorPicker: FC<BadgeColorPickerProps> = (props: BadgeColorPic
         {
             menuItem: "Advanced",
             render: () => (
-                <SketchPicker color={color} onChangeComplete={handleChange} disableAlpha />
+                <SketchPicker
+                    color={color}
+                    onChange={handleChange}
+                    onChangeComplete={populateChange}
+                    disableAlpha
+                />
             )
         }
     ];
 
     return (
         <div className="root">
-            <Popup trigger={<Button className="btn">Choose Color</Button>} on="click" hideOnScroll>
+            <Popup
+                trigger={
+                    <Button className="btn">
+                        <span style={{ color: Color(color).isDark() ? "white" : "black" }}>
+                            Choose Color
+                        </span>
+                    </Button>
+                }
+                on="click"
+                hideOnScroll>
                 <Tab panes={panes} />
             </Popup>
 
