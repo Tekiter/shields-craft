@@ -1,19 +1,35 @@
 import Head from "next/head";
 import { ReactElement } from "react";
-import "semantic-ui-css/semantic.min.css";
-import { Button } from "semantic-ui-react";
+import { StaticBadgeCraft } from "@/components/staticBadge/StaticBadgeCraft";
+import { Container, Header, Segment } from "semantic-ui-react";
+
+function HeadingArea() {
+    return (
+        <Segment textAlign="center" basic>
+            <Header as="h1" style={{ fontSize: "5rem", marginTop: "1rem", marginBottom: "2rem" }}>
+                Badge Craft
+            </Header>
+        </Segment>
+    );
+}
+
+function ContentArea() {
+    return (
+        <Container>
+            <StaticBadgeCraft />
+        </Container>
+    );
+}
 
 export default function Home(): ReactElement {
     return (
         <div>
             <Head>
-                <title>Create Next App</title>
-                <link rel="icon" href="/favicon.ico" />
+                <title>Badge Craft</title>
             </Head>
 
-            <div>
-                <Button>Hello world!</Button>
-            </div>
+            <HeadingArea />
+            <ContentArea />
         </div>
     );
 }
