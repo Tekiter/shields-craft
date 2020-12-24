@@ -6,7 +6,6 @@ import { staticBadge, StaticBadge } from "@/utils/badge";
 import { BadgeResult } from "@/components/common/BadgeResult";
 import { ShieldsStaticBadge } from "./ShieldsStaticBadge";
 import { ExportBadge } from "@/components/common/ExportResult";
-import { SelectColor } from "@/components/panels/SelectColor";
 
 export interface StaticBadgeCraftProps {
     onChange?(style: StaticBadge): void;

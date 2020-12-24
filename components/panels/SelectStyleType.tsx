@@ -1,6 +1,6 @@
 import { badgeStyleList, BadgeStylesTypes } from "@/utils/badge";
 import React, { forwardRef, useCallback, useEffect, useState } from "react";
-import { Header, Menu, Segment } from "semantic-ui-react";
+import { Menu, Segment } from "semantic-ui-react";
 
 export interface SelectStyleTypeProps {
     vertical?: boolean;
