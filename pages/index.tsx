@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { ReactElement } from "react";
 import { StaticBadgeCraft } from "@/components/staticBadge/StaticBadgeCraft";
-import { Container, Header, Segment } from "semantic-ui-react";
+import { Container, Header, List, Segment } from "semantic-ui-react";
 
 function HeadingArea() {
     return (
@@ -12,10 +12,7 @@ function HeadingArea() {
                     fontSize: "5rem",
                     marginTop: "3rem"
                 }}>
-                Badge Craft
-            </Header>
-            <Header as="h4" style={{ marginBottom: "3rem" }}>
-                by. Tekiter
+                Shields Craft
             </Header>
             <Header as="h3" style={{ marginBottom: "2rem" }}>
                 Help creating styled{" "}
@@ -30,9 +27,24 @@ function HeadingArea() {
 
 function ContentArea() {
     return (
-        <Container>
+        <Container style={{ paddingTop: "3rem", paddingBottom: "5rem" }}>
             <StaticBadgeCraft />
         </Container>
+    );
+}
+
+function FooterArea() {
+    return (
+        <Segment inverted style={{ minHeight: "200px" }}>
+            <Container>
+                <p>Shields Craft by Tekiter</p>
+                <List link inverted>
+                    <List.Item as="a" href="https://github.com/Tekiter/shields-craft">
+                        Github
+                    </List.Item>
+                </List>
+            </Container>
+        </Segment>
     );
 }
 
@@ -40,11 +52,13 @@ export default function Home(): ReactElement {
     return (
         <div>
             <Head>
-                <title>Badge Craft</title>
+                <title>Shields Craft</title>
             </Head>
 
             <HeadingArea />
             <ContentArea />
+
+            <FooterArea />
         </div>
     );
 }

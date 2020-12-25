@@ -30,7 +30,7 @@ export const SelectStyleType = forwardRef<HTMLDivElement, SelectStyleTypeProps>(
 
     return (
         <Segment ref={ref} basic>
-            <Menu vertical={vertical}>
+            <Menu vertical={vertical} fluid widths={badgeStyleList.length}>
                 {badgeStyleList.map((key) => (
                     <Menu.Item
                         key={`styletype-${key}`}

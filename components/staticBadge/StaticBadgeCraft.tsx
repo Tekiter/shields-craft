@@ -1,11 +1,12 @@
 import { forwardRef, useState } from "react";
-import { Grid, Modal, Segment } from "semantic-ui-react";
+import { Grid, Header, Modal, Segment } from "semantic-ui-react";
 import { SelectStyleType } from "@/components/panels/SelectStyleType";
 import { StaticContent } from "@/components/panels/StaticContent";
 import { staticBadge, StaticBadge } from "@/utils/badge";
 import { BadgeResult } from "@/components/common/BadgeResult";
 import { ShieldsStaticBadge } from "./ShieldsStaticBadge";
 import { ExportBadge } from "../common/ExportResult";
+import { SelectLogo } from "../panels/SelectLogo";
 
 interface ExportModalProps {
     open?: boolean;
@@ -63,6 +64,7 @@ export const StaticBadgeCraft = forwardRef<HTMLElement, StaticBadgeCraftProps>((
             <Grid.Row>
                 <Grid.Column>
                     <Segment>
+                        <Header>Content</Header>
                         <StaticContent
                             onChange={(value) => handleChange(value)}
                             label={badge.label}
@@ -70,13 +72,21 @@ export const StaticBadgeCraft = forwardRef<HTMLElement, StaticBadgeCraftProps>((
                             color={badge.color}
                             labelColor={badge.labelColor}
                         />
+                        <Header>Style</Header>
+                        <SelectStyleType
+                            onChange={(value) => handleChange(value)}
+                            style={badge.style}
+                        />
                     </Segment>
                 </Grid.Column>
                 <Grid.Column>
                     <Segment>
-                        <SelectStyleType
+                        <Header>Icon</Header>
+                        <SelectLogo
+                            logo={badge.logo}
+                            logoColor={badge.logoColor}
+                            logoWidth={badge.logoWidth}
                             onChange={(value) => handleChange(value)}
-                            style={badge.style}
                         />
                     </Segment>
                 </Grid.Column>

@@ -1,68 +1,56 @@
-import { FC, useEffect, useState } from "react";
-import { Dropdown, Header, Segment, Tab } from "semantic-ui-react";
-
-const SimpleIconsPicker = () => {
-    const [iconList, setIconList] = useState([]);
-
-    useEffect(() => {
-        (async function () {
-            const r = await fetch(
-                "https://rawcdn.githack.com/simple-icons/simple-icons/7dce90587ba42f60b54ea64f3bedd237d1f6cbe7/_data/simple-icons.json"
-            );
-            const json = await r.json();
-            setIconList(() => json.icons);
-        })();
-    }, []);
-
-    return (
-        <Tab.Pane>
-            <Header as="h4">
-                Icon name of{" "}
-                <a href="https://simpleicons.org/" target="_blank" rel="noreferrer">
-                    Simple Icons
-                </a>
-            </Header>
-            <Dropdown
-                placeholder="icon name"
-                clearable
-                search
-                fluid
-                selection
-                options={iconList.map((icon) => ({
-                    key: icon.title,
-                    text: icon.title,
-                    value: icon.title
-                }))}
-            />
-        </Tab.Pane>
-    );
-};
-
-const LogoPicker = (props) => {
-    const logoPickerPanes = [
-        {
-            menuItem: "Simple Icons",
-            render: () => <SimpleIconsPicker />
-        },
-        {
-            menuItem: "Custom",
-            render: () => <Tab.Pane>Coming Soon</Tab.Pane>
-        }
-    ];
-
-    return <Tab panes={logoPickerPanes} />;
-};
+import { FC, useState } from "react";
+import { Segment } from "semantic-ui-react";
+import { LogoModes, LogoPicker } from "@/components/panels/logo/LogoPicker";
+import { BadgeColorPicker } from "../common/BadgeColorPicker";
 
 export interface SelectLogoProps {
-    onChange: () => void;
+    onChange: (e: { [key: string]: string }) => void;
+    logo: string;
+    logoColor: string;
+    logoWidth: number;
 }
 
 export const SelectLogo: FC<SelectLogoProps> = (props) => {
     let { onChange } = props;
 
+    const [logoMode, setLogoMode] = useState<LogoModes>("simpleIcons");
+
+    function handleLogoModeChange(mode: LogoModes) {
+        setLogoMode(mode);
+
+        if (typeof onChange !== "function") {
+            return;
+        }
+
+        if (mode === "simpleIcons") {
+            //
+        } else if (mode === "custom") {
+            //
+        }
+    }
+
+    function handleIconChange(logo: string) {
+        if (typeof onChange === "function") {
+            onChange({ logo });
+        }
+    }
+
+    function handleLogoColorChange(color: string) {
+        if (typeof onChange === "function") {
+            onChange({ logoColor: color });
+        }
+    }
+
     return (
         <Segment basic>
-            <LogoPicker />
+            <LogoPicker
+                mode={logoMode}
+                onModeChange={handleLogoModeChange}
+                onIconChange={handleIconChange}
+            />
+            <BadgeColorPicker fluid onChange={handleLogoColorChange}>
+                Icon Color
+            </BadgeColorPicker>
         </Segment>
     );
 };
