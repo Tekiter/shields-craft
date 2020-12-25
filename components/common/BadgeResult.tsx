@@ -31,7 +31,9 @@ export const BadgeResult = forwardRef<HTMLElement, BadgeResultProps>((props, ref
                     </Button>
                 </Header>
             </div>
-            <Segment textAlign="center">{badge()}</Segment>
+            <Segment textAlign="center" style={{ minHeight: "65px" }}>
+                {badge()}
+            </Segment>
         </Segment>
     );
 });

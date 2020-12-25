@@ -5,11 +5,19 @@ import { Container, Header, Segment } from "semantic-ui-react";
 
 function HeadingArea() {
     return (
-        <Segment textAlign="center" basic inverted color="black">
-            <Header as="h1" style={{ fontSize: "5rem", marginTop: "1rem", marginBottom: "2rem" }}>
+        <Segment textAlign="center" basic inverted style={{ backgroundColor: "#004441" }}>
+            <Header
+                as="h1"
+                style={{
+                    fontSize: "5rem",
+                    marginTop: "3rem"
+                }}>
                 Badge Craft
             </Header>
-            <Header as="h3" style={{ marginBottom: "1rem" }}>
+            <Header as="h4" style={{ marginBottom: "3rem" }}>
+                by. Tekiter
+            </Header>
+            <Header as="h3" style={{ marginBottom: "2rem" }}>
                 Help creating styled <a href="https://shields.io/">Shields.io</a> badge.
             </Header>
         </Segment>
