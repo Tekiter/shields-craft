@@ -18,7 +18,11 @@ function HeadingArea() {
                 by. Tekiter
             </Header>
             <Header as="h3" style={{ marginBottom: "2rem" }}>
-                Help creating styled <a href="https://shields.io/">Shields.io</a> badge.
+                Help creating styled{" "}
+                <a href="https://shields.io/" target="_blank" rel="noreferrer">
+                    Shields.io
+                </a>{" "}
+                badge.
             </Header>
         </Segment>
     );
