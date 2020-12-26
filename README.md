@@ -1,30 +1,61 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ShieldsCraft
 
-## Getting Started
+[![GitHub license](https://img.shields.io/github/license/Tekiter/shields-craft?style=flat-square)](https://github.com/Tekiter/shields-craft/blob/master/LICENSE.md)
+[![GitHub stars](https://img.shields.io/github/stars/Tekiter/shields-craft?style=flat-square)](https://github.com/Tekiter/shields-craft/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/Tekiter/shields-craft?style=flat-square)](https://github.com/Tekiter/shields-craft/issues)
 
-First, run the development server:
+**ShieldsCraft** helps to create [Shields.io](http://shields.io/) badges easily.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+-   [English](README.md)
+-   [한국어](README.ko.md)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Introduction
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+[Shields.io](http://shields.io/) is very useful service for creating badges. You can create your own badge free and put it in your repository's README.
 
-## Learn More
+However, styling this badge in [Shields.io website](http://shields.io/) is challenging.
 
-To learn more about Next.js, take a look at the following resources:
+You might...
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Find out which options you can use.
+2. Build URL query string of options **by hand**.
+3. Append query string to badge's URL.
+4. Put the URL in your browser's address bar.
+5. Check how it looks.
+6. Repeat 1-5 until you are happy with the badge.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Repeating this is quite annoying.
 
-## Deploy on Vercel
+ShieldsCraft creates badge's URL for you. All you have to do is just clicking.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Features
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+-   Style options GUI
+-   Badge preview
+-   Color picker
+-   Logo Selector
+-   Export badge as URL/Markdown/HTML
+
+Only Static Badge is currently supported.
+
+## Tech Stack
+
+-   React
+-   Next.js
+-   Semantic UI React
+
+## Development
+
+1. Install Node 12+ and yarn.
+2. Clone this repository.
+3. Run `yarn install` to install dependencies.
+4. Run `yarn dev` to start dev server.
+5. Run `yarn storybook` to start storybook server.
+
+To build and generate static HTML, run `yarn build` then `yarn export`.
+
+## License
+
+Project License can be found [here](LICENSE.md).
+
+All generated badges are coming from [Shields.io](https://github.com/badges/shields).
