@@ -11,7 +11,7 @@
 
 ## Getting Started
 
-tekiter.github.io/shields-craft
+[tekiter.github.io/shields-craft](tekiter.github.io/shields-craft)
 
 ## Introduction
 
