@@ -9,6 +9,10 @@
 -   [English](README.md)
 -   [한국어](README.ko.md)
 
+## 시작하기
+
+tekiter.github.io/shields-craft
+
 ## 소개
 
 [Shields.io](http://shields.io/) 는 URL만으로 손쉽게 뱃지를 만들고 README 파일 등에 넣을 수 있게 해주는 서비스입니다. 그러나 뱃지를 입맛대로 꾸미려면 다음과 같은 과정을 거쳐야합니다.

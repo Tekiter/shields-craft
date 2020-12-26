@@ -9,6 +9,10 @@
 -   [English](README.md)
 -   [한국어](README.ko.md)
 
+## Getting Started
+
+tekiter.github.io/shields-craft
+
 ## Introduction
 
 [Shields.io](http://shields.io/) is very useful service for creating badges. You can create your own badge free and put it in your repository's README.
