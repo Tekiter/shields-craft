@@ -2189,6 +2189,11 @@
   dependencies:
     "@types/react" "*"
 
+"@types/simple-icons@^2.5.0":
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/@types/simple-icons/-/simple-icons-2.5.0.tgz#513753dc2416e0a9ae1767df678e1e7063e9d948"
+  integrity sha512-cHQ145criWruZJaYFt76WcarU+jICOHzyLma/VtC2mISrJnlXMYTcfH2hER5ecUSPf90/qxKYYOsIkAXlQhoHQ==
+
 "@types/source-list-map@*":
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/@types/source-list-map/-/source-list-map-0.1.2.tgz#0078836063ffaf17412349bba364087e0ac02ec9"
@@ -8837,6 +8842,11 @@ react-fast-compare@^3.0.1, react-fast-compare@^3.2.0:
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-3.2.0.tgz#641a9da81b6a6320f270e89724fb45a0b39e43bb"
   integrity sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA==
 
+react-github-corner@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/react-github-corner/-/react-github-corner-2.5.0.tgz#e350d0c69f69c075bc0f1d2a6f1df6ee91da31f2"
+  integrity sha512-ofds9l6n61LJc6ML+jSE6W9ZSQvATcMR9evnHPXua1oDYj289HKODnVqFUB/g2a4ieBjDHw416iHP3MjqnU76Q==
+
 react-helmet-async@^1.0.2:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/react-helmet-async/-/react-helmet-async-1.0.7.tgz#b988fbc3abdc4b704982bb74b9cb4a08fcf062c1"
@@ -9620,6 +9630,11 @@ simple-get@^4.0.0:
     decompress-response "^6.0.0"
     once "^1.3.1"
     simple-concat "^1.0.0"
+
+simple-icons@^4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/simple-icons/-/simple-icons-4.3.0.tgz#d9d2a9f541e7f7a0909d138074eb4ef6959eecf5"
+  integrity sha512-Khz9p83mq139BsbRuxbk3VYoBPW0mGlmiN6G/BO8HoxPP3Te0LVfFXBVLPxDFGRwPD0MkoNCczMbYfMCI2dQ8g==
 
 simple-swizzle@^0.2.2:
   version "0.2.2"

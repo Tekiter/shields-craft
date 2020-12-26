@@ -1,20 +1,36 @@
-import { SyntheticEvent, useEffect, useState } from "react";
+import { FC, SyntheticEvent, useEffect, useState } from "react";
 import { Dropdown, DropdownProps, Header } from "semantic-ui-react";
+
+interface IconList {
+    title: string;
+    hex: string;
+    source: string;
+}
+
+async function getIconList() {
+    let icons: Array<IconList>;
+    try {
+        icons = (await import("simple-icons/_data/simple-icons.json")).default.icons;
+    } catch {
+        const r = await fetch(
+            "https://rawcdn.githack.com/simple-icons/simple-icons/7dce90587ba42f60b54ea64f3bedd237d1f6cbe7/_data/simple-icons.json"
+        );
+        icons = (await r.json()).icons;
+    }
+    return icons;
+}
 
 export interface SimpleIconsPickerProps {
     onChange?: (value: string) => void;
 }
 
-export const SimpleIconsPicker = (props: SimpleIconsPickerProps) => {
+export const SimpleIconsPicker: FC<SimpleIconsPickerProps> = (props: SimpleIconsPickerProps) => {
     const [iconList, setIconList] = useState([]);
 
     useEffect(() => {
         (async function () {
-            const r = await fetch(
-                "https://rawcdn.githack.com/simple-icons/simple-icons/7dce90587ba42f60b54ea64f3bedd237d1f6cbe7/_data/simple-icons.json"
-            );
-            const json = await r.json();
-            setIconList(() => json.icons);
+            const icons = await getIconList();
+            setIconList(() => icons);
         })();
     }, []);
 

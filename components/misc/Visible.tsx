@@ -5,9 +5,10 @@ export interface VisibleProps {
     children: ReactNode;
 }
 
-export const Visible = forwardRef<HTMLDivElement, VisibleProps>((props) => {
+export const Visible = forwardRef<HTMLDivElement, VisibleProps>((props, ref) => {
     return (
         <div
+            ref={ref}
             style={{
                 visibility: props.visible ? "visible" : "collapse",
                 height: props.visible ? undefined : 0

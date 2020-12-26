@@ -2,6 +2,9 @@ import Head from "next/head";
 import { ReactElement } from "react";
 import { StaticBadgeCraft } from "@/components/staticBadge/StaticBadgeCraft";
 import { Container, Header, List, Segment } from "semantic-ui-react";
+import githubIcon from "simple-icons/icons/github";
+import GithubCorner from "react-github-corner";
+import { SVGIcon } from "@/components/misc/SVGIcon";
 
 function HeadingArea() {
     return (
@@ -21,6 +24,11 @@ function HeadingArea() {
                 </a>{" "}
                 badge.
             </Header>
+            <GithubCorner
+                href="https://github.com/Tekiter/shields-craft"
+                octoColor="#004441"
+                bannerColor="#00DED3"
+            />
         </Segment>
     );
 }
@@ -40,6 +48,12 @@ function FooterArea() {
                 <p>Shields Craft by Tekiter</p>
                 <List link inverted>
                     <List.Item as="a" href="https://github.com/Tekiter/shields-craft">
+                        <SVGIcon
+                            svg={githubIcon.svg}
+                            height="1em"
+                            width="1em"
+                            style={{ marginRight: "0.3em" }}
+                        />
                         Github
                     </List.Item>
                 </List>

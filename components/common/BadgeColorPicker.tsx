@@ -1,4 +1,4 @@
-import { FC, ReactNode, useEffect, useState } from "react";
+import { CSSProperties, FC, ReactNode, useEffect, useState } from "react";
 import { ColorChangeHandler, SketchPicker, SliderPicker } from "react-color";
 import { Button, Popup, Tab, ButtonProps } from "semantic-ui-react";
 import Color from "color";
@@ -32,6 +32,7 @@ export interface BadgeColorPickerProps {
     color?: string;
     fluid?: boolean;
     children?: ReactNode;
+    style?: CSSProperties;
 }
 
 export const BadgeColorPicker: FC<BadgeColorPickerProps> = (props: BadgeColorPickerProps) => {
@@ -92,7 +93,7 @@ export const BadgeColorPicker: FC<BadgeColorPickerProps> = (props: BadgeColorPic
     ];
 
     return (
-        <div className="root">
+        <div className="root" style={props.style}>
             <Popup
                 trigger={
                     <ColoredButton color={color} fluid={props.fluid}>
