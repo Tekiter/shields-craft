@@ -1,7 +1,8 @@
 import { CSSProperties, FC, ReactNode, useEffect, useState } from "react";
-import { ColorChangeHandler, SketchPicker, SliderPicker } from "react-color";
-import { Button, Popup, Tab, ButtonProps } from "semantic-ui-react";
+import { ColorChangeHandler, SketchPicker } from "react-color";
+import { Button, Popup, ButtonProps } from "semantic-ui-react";
 import Color from "color";
+import { badgeColors } from "@/utils/badge";
 
 interface ColoredButtonProps extends Omit<ButtonProps, "color"> {
     color?: string;
@@ -18,6 +19,11 @@ const ColoredButton: FC<ColoredButtonProps> = (props) => {
         </Button>
     );
 };
+
+const presentColors = badgeColors.map(({ key, color }) => ({
+    title: key,
+    color
+}));
 
 export interface BadgeColorPickerProps {
     onChange?(color: string): void;
@@ -50,40 +56,6 @@ export const BadgeColorPicker: FC<BadgeColorPickerProps> = (props: BadgeColorPic
         }
     }, [props.color]);
 
-    const panes = [
-        {
-            menuItem: "Simple",
-            render: () => (
-                <div>
-                    <SliderPicker
-                        className="sliderpicker"
-                        color={color}
-                        onChange={handleChange}
-                        onChangeComplete={populateChange}></SliderPicker>
-                    <style jsx global>
-                        {`
-                            .sliderpicker {
-                                min-width: 300px;
-                                margin: 20px 0;
-                            }
-                        `}
-                    </style>
-                </div>
-            )
-        },
-        {
-            menuItem: "Advanced",
-            render: () => (
-                <SketchPicker
-                    color={color}
-                    onChange={handleChange}
-                    onChangeComplete={populateChange}
-                    disableAlpha
-                />
-            )
-        }
-    ];
-
     return (
         <div className="root" style={props.style}>
             <Popup
@@ -93,9 +65,14 @@ export const BadgeColorPicker: FC<BadgeColorPickerProps> = (props: BadgeColorPic
                     </ColoredButton>
                 }
                 on="click"
-                position="bottom left"
-                hideOnScroll>
-                <Tab panes={panes} />
+                position="bottom left">
+                <SketchPicker
+                    color={color}
+                    onChange={handleChange}
+                    onChangeComplete={populateChange}
+                    disableAlpha
+                    presetColors={presentColors}
+                />
             </Popup>
 
             <style jsx global>{`
