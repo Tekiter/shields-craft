@@ -76,6 +76,7 @@ export const StaticBadgeCraft = forwardRef<HTMLElement, StaticBadgeCraftProps>((
                         <SelectStyleType
                             onChange={(value) => handleChange(value)}
                             style={badge.style}
+                            vertical
                         />
                     </Segment>
                 </Grid.Column>
