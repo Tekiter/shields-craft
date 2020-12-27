@@ -49,7 +49,7 @@ export const SelectLogo: FC<SelectLogoProps> = (props) => {
                 onIconChange={handleIconChange}
             />
             <BadgeColorPicker fluid onChange={handleLogoColorChange} style={{ marginTop: "1rem" }}>
-                Icon Color
+                Select Icon Color
             </BadgeColorPicker>
         </Segment>
     );
