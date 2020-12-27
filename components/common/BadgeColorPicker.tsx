@@ -10,20 +10,12 @@ interface ColoredButtonProps extends Omit<ButtonProps, "color"> {
 const ColoredButton: FC<ColoredButtonProps> = (props) => {
     const { color, ...btnProps } = props;
     return (
-        <span className="root">
-            <Button className="colorbtn" {...btnProps}>
-                <span
-                    className="clbtn"
-                    style={{ color: Color(color).isDark() ? "white" : "black" }}>
-                    {props.children}
-                </span>
-            </Button>
-            <style jsx>{`
-                .root :global(.colorbtn) {
-                    background-color: ${color} !important;
-                }
-            `}</style>
-        </span>
+        <Button
+            className="colorbtn"
+            {...btnProps}
+            style={{ backgroundColor: color, color: Color(color).isDark() ? "white" : "black" }}>
+            {props.children}
+        </Button>
     );
 };
 
