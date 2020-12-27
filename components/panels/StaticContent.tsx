@@ -61,7 +61,7 @@ export const StaticContent = forwardRef<Element, StaticContentProps>(
                                 color={props.labelColor}
                                 onChange={handleColor("labelColor")}
                                 fluid>
-                                Color
+                                Select Color
                             </BadgeColorPicker>
                         </Grid.Column>
                     </Grid.Row>
@@ -77,7 +77,7 @@ export const StaticContent = forwardRef<Element, StaticContentProps>(
                                 color={props.color}
                                 onChange={handleColor("color")}
                                 fluid>
-                                Color
+                                Select Color
                             </BadgeColorPicker>
                         </Grid.Column>
                     </Grid.Row>

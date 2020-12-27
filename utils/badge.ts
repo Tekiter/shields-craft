@@ -63,3 +63,22 @@ export function staticBadge(badge: StaticBadge): string {
 
     return url;
 }
+
+export const badgeColors: ReadonlyArray<{ key: string; color: string }> = [
+    { key: "brightgreen", color: "#44cc11" },
+    { key: "green", color: "#97ca00" },
+    { key: "yellowgreen", color: "#a4a61d" },
+    { key: "yellow", color: "#dfb317" },
+    { key: "orange", color: "#fe7d37" },
+    { key: "red", color: "#e05d44" },
+    { key: "blue", color: "#007ec6" },
+    { key: "lightgrey", color: "#9f9f9f" },
+    { key: "success", color: "#44cc11" },
+    { key: "important", color: "#fe7d37" },
+    { key: "critical", color: "#e05d44" },
+    { key: "informational", color: "#007ec6" },
+    { key: "inactive", color: "#9f9f9f" },
+    { key: "blueviolet", color: "#8a2be2" },
+    { key: "black", color: "#000000" },
+    { key: "white", color: "#FFFFFF" }
+] as const;
