@@ -78,5 +78,7 @@ export const badgeColors: ReadonlyArray<{ key: string; color: string }> = [
     { key: "critical", color: "#e05d44" },
     { key: "informational", color: "#007ec6" },
     { key: "inactive", color: "#9f9f9f" },
-    { key: "blueviolet", color: "#8a2be2" }
+    { key: "blueviolet", color: "#8a2be2" },
+    { key: "black", color: "#000000" },
+    { key: "white", color: "#FFFFFF" }
 ] as const;
