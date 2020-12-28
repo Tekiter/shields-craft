@@ -1,6 +1,7 @@
-import { Menu, Segment } from "semantic-ui-react";
+import { Menu } from "semantic-ui-react";
 import { Visible } from "@/components/misc/Visible";
 import { SimpleIconsPicker } from "@/components/panels/logo/SimpleIconPicker";
+import { FC } from "react";
 
 export type LogoModes = "simpleIcons" | "custom";
 
@@ -10,7 +11,7 @@ export interface LogoPickerProps {
     onIconChange?: (icon: string) => void;
 }
 
-export const LogoPicker = (props: LogoPickerProps) => {
+export const LogoPicker: FC<LogoPickerProps> = (props) => {
     const { mode = "simpleIcons", onModeChange, onIconChange } = props;
 
     function handleModeChange(modeType: LogoModes) {
