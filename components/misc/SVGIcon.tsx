@@ -26,7 +26,7 @@ export const SVGIcon: FC<SVGIconProps> = (props: SVGIconProps) => {
 
     useEffect(() => {
         wrapper.current.innerHTML = svg;
-    }, []);
+    }, [svg]);
 
     const hoverCSS = hover ? `fill: ${hover}; transform: scale(1.1);` : "";
 
