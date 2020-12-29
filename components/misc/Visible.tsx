@@ -11,7 +11,8 @@ export const Visible = forwardRef<HTMLDivElement, VisibleProps>((props, ref) => 
             ref={ref}
             style={{
                 visibility: props.visible ? "visible" : "collapse",
-                height: props.visible ? undefined : 0
+                height: props.visible ? undefined : 0,
+                overflow: "hidden"
             }}>
             {props.children}
         </div>
