@@ -11,7 +11,7 @@
 
 ## 시작하기
 
-[tekiter.github.io/shields-craft](tekiter.github.io/shields-craft)
+[tekiter.github.io/shields-craft](https://tekiter.github.io/shields-craft)
 
 ## 소개
 
