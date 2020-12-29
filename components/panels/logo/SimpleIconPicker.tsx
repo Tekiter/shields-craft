@@ -1,8 +1,8 @@
 import Color from "color";
 import { WrapBox } from "@/components/misc/WrapBox";
 import { SVGIcon } from "@/components/misc/SVGIcon";
-import { FC, useEffect, useState } from "react";
-import { Button, Header, Input, Segment } from "semantic-ui-react";
+import { FC, ReactNode, useEffect, useState } from "react";
+import { Button, Header, Input, Segment, Visibility, VisibilityEventData } from "semantic-ui-react";
 import simpleIcons from "simple-icons";
 interface SimpleIcon {
     title: string;
@@ -77,6 +77,48 @@ const IconButton: FC<IconButtonProps> = (props) => {
     );
 };
 
+interface InfiniteScrollProps {
+    data: ReactNode[];
+}
+
+const InfiniteScroll: FC<InfiniteScrollProps> = (props) => {
+    const { data } = props;
+
+    const [loadedData, setLoadedData] = useState([]);
+    const [fetchedCount, setFetchedCount] = useState(0);
+
+    function fetchMore() {
+        const newData = [];
+
+        const newIdx = Math.min(fetchedCount + 60, data.length);
+        setFetchedCount(newIdx);
+
+        for (let i = 0; i < newIdx; i++) {
+            newData.push(data[i]);
+        }
+
+        setLoadedData(newData);
+    }
+
+    useEffect(() => {
+        setLoadedData([]);
+        setFetchedCount(0);
+        fetchMore();
+    }, [data]);
+
+    function handleScroll(_: null, { calculations }: VisibilityEventData) {
+        if (calculations.bottomVisible) {
+            fetchMore();
+        }
+    }
+
+    return (
+        <Visibility onUpdate={handleScroll}>
+            <WrapBox>{loadedData}</WrapBox>
+        </Visibility>
+    );
+};
+
 export interface SimpleIconsPickerProps {
     onChange?: (value: string) => void;
 }
@@ -123,8 +165,8 @@ export const SimpleIconsPicker: FC<SimpleIconsPickerProps> = (props: SimpleIcons
                 value={search}
             />
             <Segment basic style={{ height: "21rem", overflow: "auto" }}>
-                <WrapBox>
-                    {iconList
+                <InfiniteScroll
+                    data={iconList
                         .filter((icon) => icon.skey.includes(makeSearchKey(search)))
                         .map((icon) => (
                             <IconButton
@@ -134,8 +176,7 @@ export const SimpleIconsPicker: FC<SimpleIconsPickerProps> = (props: SimpleIcons
                                 selected={icon.title == selected}
                                 onClick={handleChange(icon.title)}
                             />
-                        ))}
-                </WrapBox>
+                        ))}></InfiniteScroll>
             </Segment>
         </>
     );
