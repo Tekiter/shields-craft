@@ -40,9 +40,11 @@ ShieldsCraft 가 여러분을 대신해서 뱃지 URL을 만들어줍니다.
 
 ## 기술 스택
 
+-   Typescript
 -   React
 -   Next.js
 -   Semantic UI React
+-   Storybook
 
 ## 개발
 
