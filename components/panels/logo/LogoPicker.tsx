@@ -2,6 +2,7 @@ import { Menu } from "semantic-ui-react";
 import { Visible } from "@/components/misc/Visible";
 import { SimpleIconsPicker } from "@/components/panels/logo/SimpleIconPicker";
 import { FC } from "react";
+import { CustomIconPicker } from "./CustomIconPicker";
 
 export type LogoModes = "simpleIcons" | "custom";
 
@@ -26,6 +27,20 @@ export const LogoPicker: FC<LogoPickerProps> = (props) => {
         }
     }
 
+    function handleCustomIconChange(icondata: string) {
+        if (typeof onIconChange === "function") {
+            onIconChange(icondata);
+        }
+    }
+
+    const currentPicker = (() => {
+        if (mode === "simpleIcons") {
+            return <SimpleIconsPicker onChange={handleSimpleIconsChange} />;
+        } else if (mode === "custom") {
+            return <CustomIconPicker onChange={handleCustomIconChange} />;
+        }
+    })();
+
     return (
         <div>
             <Menu pointing widths={2}>
@@ -40,11 +55,14 @@ export const LogoPicker: FC<LogoPickerProps> = (props) => {
                     onClick={() => handleModeChange("custom")}
                 />
             </Menu>
-            <Visible visible={mode === "simpleIcons"}>
+            {/* <Visible visible={mode === "simpleIcons"}>
                 <SimpleIconsPicker onChange={handleSimpleIconsChange} />
             </Visible>
 
-            <Visible visible={mode === "custom"}>Comming Soon...</Visible>
+            <Visible visible={mode === "custom"}>
+                <CustomIconPicker onChange={handleCustomIconChange} />
+            </Visible> */}
+            {currentPicker}
         </div>
     );
 };

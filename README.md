@@ -44,9 +44,11 @@ Only Static Badge is currently supported.
 
 ## Tech Stack
 
+-   Typescript
 -   React
 -   Next.js
 -   Semantic UI React
+-   Storybook
 
 ## Development
 

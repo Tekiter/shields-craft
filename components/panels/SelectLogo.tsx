@@ -18,8 +18,8 @@ export const SelectLogo: FC<SelectLogoProps> = (props) => {
     function handleLogoModeChange(mode: LogoModes) {
         setLogoMode(mode);
 
-        if (typeof onChange !== "function") {
-            return;
+        if (typeof onChange === "function") {
+            onChange({ logo: "" });
         }
 
         if (mode === "simpleIcons") {
