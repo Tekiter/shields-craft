@@ -30,6 +30,9 @@ function makeQuery(obj: BadgeStyle): string {
     const arr = [];
 
     for (const key in obj) {
+        if (obj[key] === undefined || obj[key] === null || obj[key] === "") {
+            continue;
+        }
         arr.push(`${encodeURIComponent(key)}=${encodeURIComponent(obj[key] + "")}`);
     }
 
