@@ -36,7 +36,8 @@ export const StaticBadgeCraft = forwardRef<HTMLElement, StaticBadgeCraftProps>((
     const [badge, setBadge] = useState<StaticBadge>(() => ({
         label: "shields.io",
         message: "badge",
-        color: "407DBF"
+        color: "007EC6",
+        labelColor: "555555"
     }));
 
     const [isExportOpen, setIsExportOpen] = useState(false);
