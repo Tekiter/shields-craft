@@ -23,7 +23,7 @@ function HeadingArea() {
                 style={{
                     marginTop: "3rem"
                 }}>
-                <TitleImage style={{ height: "7rem", width: "auto" }} />
+                <TitleImage style={{ height: "7rem", width: "auto", maxWidth: "80vw" }} />
             </Header>
             <Header as="h3" style={{ marginBottom: "2rem" }}>
                 Help creating styled{" "}
