@@ -43,7 +43,7 @@ function escapeParam(value: string): string {
     let s = encodeURIComponent(value);
     s = s.replace(/-/g, "--");
     s = s.replace(/_/g, "__");
-    s = s.replace(/ /g, "_");
+    s = s.replace(/%20/g, "_");
 
     return s;
 }
@@ -52,9 +52,16 @@ export function staticBadge(badge: StaticBadge): string {
     let { label = "", message = "", color = "blue", ...styles } = badge;
     label = escapeParam(label);
     message = escapeParam(message);
-    color = escapeParam(color);
+    color = escapeParam(beautifyColor(color));
 
     const mainPart = `${label}-${message}-${color}`;
+
+    styles.logoColor = beautifyColor(styles.logoColor);
+
+    styles.labelColor = beautifyColor(styles.labelColor);
+    if (styles.labelColor === "555555") {
+        styles.labelColor = null;
+    }
 
     const query = makeQuery(styles);
 
@@ -68,20 +75,41 @@ export function staticBadge(badge: StaticBadge): string {
 }
 
 export const badgeColors: ReadonlyArray<{ key: string; color: string }> = [
+    { key: "indigo", color: "#4b0082" },
+    { key: "purple", color: "#800080" },
+    { key: "blueviolet", color: "#8a2be2" },
+    { key: "darkcyan", color: "#008b8b" },
+    { key: "blue", color: "#007ec6" },
     { key: "brightgreen", color: "#44cc11" },
     { key: "green", color: "#97ca00" },
     { key: "yellowgreen", color: "#a4a61d" },
     { key: "yellow", color: "#dfb317" },
     { key: "orange", color: "#fe7d37" },
     { key: "red", color: "#e05d44" },
-    { key: "blue", color: "#007ec6" },
+    { key: "crimson", color: "#dc143c" },
     { key: "lightgrey", color: "#9f9f9f" },
-    { key: "success", color: "#44cc11" },
-    { key: "important", color: "#fe7d37" },
-    { key: "critical", color: "#e05d44" },
-    { key: "informational", color: "#007ec6" },
-    { key: "inactive", color: "#9f9f9f" },
-    { key: "blueviolet", color: "#8a2be2" },
     { key: "black", color: "#000000" },
-    { key: "white", color: "#FFFFFF" }
+    { key: "white", color: "#ffffff" }
 ] as const;
+
+const badgeColorsRev = (() => {
+    const r: { [color: string]: string } = {};
+    badgeColors.forEach((item) => {
+        r[item.color.toLowerCase()] = item.key;
+        if (item.color[0] === "#") {
+            r[item.color.toLowerCase().slice(1)] = item.key;
+        }
+    });
+    return r;
+})();
+
+export function beautifyColor(color: string): string {
+    if (color === undefined) {
+        return color;
+    }
+    color = color.toLowerCase();
+    if (badgeColorsRev[color] !== undefined) {
+        return badgeColorsRev[color];
+    }
+    return color;
+}

@@ -1,4 +1,4 @@
-import { CSSProperties, FC, ReactNode, useEffect, useState } from "react";
+import { CSSProperties, EffectCallback, FC, ReactNode, useEffect, useState } from "react";
 import { ColorChangeHandler, SketchPicker } from "react-color";
 import { Button, Popup, ButtonProps } from "semantic-ui-react";
 import Color from "color";
@@ -20,10 +20,13 @@ const ColoredButton: FC<ColoredButtonProps> = (props) => {
     );
 };
 
-const presentColors = badgeColors.map(({ key, color }) => ({
-    title: key,
-    color
-}));
+const presentColors = [
+    ...badgeColors.map(({ key, color }) => ({
+        title: key,
+        color
+    })),
+    { title: "default", color: "#555555" }
+];
 
 export interface BadgeColorPickerProps {
     onChange?(color: string): void;
@@ -34,7 +37,7 @@ export interface BadgeColorPickerProps {
 }
 
 export const BadgeColorPicker: FC<BadgeColorPickerProps> = (props: BadgeColorPickerProps) => {
-    const [color, setColor] = useState("#405fbf");
+    const [color, setColor] = useState(null);
 
     const handleChange: ColorChangeHandler = (color) => {
         setColor(color.hex);
@@ -49,7 +52,7 @@ export const BadgeColorPicker: FC<BadgeColorPickerProps> = (props: BadgeColorPic
 
     useEffect(() => {
         try {
-            const col = Color(props.color);
+            const col = Color("#" + props.color);
             setColor(() => col.hex());
         } catch (_) {
             //
