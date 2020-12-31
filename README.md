@@ -3,6 +3,7 @@
 [![GitHub license](https://img.shields.io/github/license/Tekiter/shields-craft?style=flat-square)](https://github.com/Tekiter/shields-craft/blob/master/LICENSE.md)
 [![GitHub stars](https://img.shields.io/github/stars/Tekiter/shields-craft?style=flat-square)](https://github.com/Tekiter/shields-craft/stargazers)
 [![GitHub issues](https://img.shields.io/github/issues/Tekiter/shields-craft?style=flat-square)](https://github.com/Tekiter/shields-craft/issues)
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Ftekiter.github.io%2Fshields-craft%2F&count_bg=%2368AA4C&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=true)](https://hits.seeyoufarm.com)
 
 **Shields Craft** helps to create [Shields.io](http://shields.io/) badges easily.
 
