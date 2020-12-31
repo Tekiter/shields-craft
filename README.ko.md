@@ -1,10 +1,10 @@
-# ShieldsCraft
+# ![ShieldsCraft](public/ShieldsCraft.svg)
 
 [![GitHub license](https://img.shields.io/github/license/Tekiter/shields-craft?style=flat-square)](https://github.com/Tekiter/shields-craft/blob/master/LICENSE.md)
 [![GitHub stars](https://img.shields.io/github/stars/Tekiter/shields-craft?style=flat-square)](https://github.com/Tekiter/shields-craft/stargazers)
 [![GitHub issues](https://img.shields.io/github/issues/Tekiter/shields-craft?style=flat-square)](https://github.com/Tekiter/shields-craft/issues)
 
-**ShieldsCraft** 를 사용하면 [Shields.io](http://shields.io/) 뱃지를 쉽게 만들 수 있습니다.
+**Shields Craft** 를 사용하면 [Shields.io](http://shields.io/) 뱃지를 쉽게 만들 수 있습니다.
 
 -   [English](README.md)
 -   [한국어](README.ko.md)
@@ -12,6 +12,8 @@
 ## 시작하기
 
 [tekiter.github.io/shields-craft](https://tekiter.github.io/shields-craft)
+
+![Screenshot](screenshots/main.png)
 
 ## 소개
 
