@@ -1,10 +1,10 @@
-# ShieldsCraft
+# ![ShieldsCraft](public/ShieldsCraft.svg)
 
 [![GitHub license](https://img.shields.io/github/license/Tekiter/shields-craft?style=flat-square)](https://github.com/Tekiter/shields-craft/blob/master/LICENSE.md)
 [![GitHub stars](https://img.shields.io/github/stars/Tekiter/shields-craft?style=flat-square)](https://github.com/Tekiter/shields-craft/stargazers)
 [![GitHub issues](https://img.shields.io/github/issues/Tekiter/shields-craft?style=flat-square)](https://github.com/Tekiter/shields-craft/issues)
 
-**ShieldsCraft** helps to create [Shields.io](http://shields.io/) badges easily.
+**Shields Craft** helps to create [Shields.io](http://shields.io/) badges easily.
 
 -   [English](README.md)
 -   [한국어](README.ko.md)
@@ -12,6 +12,8 @@
 ## Getting Started
 
 [tekiter.github.io/shields-craft](https://tekiter.github.io/shields-craft)
+
+![Screenshot](screenshots/main.png)
 
 ## Introduction
 
