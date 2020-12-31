@@ -65,6 +65,14 @@ function FooterArea() {
                         />
                         Github
                     </List.Item>
+                    <List.Item style={{ marginTop: "0.5rem" }}>
+                        <a href="https://hits.seeyoufarm.com">
+                            <img
+                                alt="hits"
+                                src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Ftekiter.github.io%2Fshields-craft%2F&count_bg=%232F3133&title_bg=%232F3133&icon=&icon_color=%23E7E7E7&title=Hits&edge_flat=true"
+                            />
+                        </a>
+                    </List.Item>
                 </List>
             </Container>
         </Segment>
