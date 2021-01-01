@@ -18,14 +18,18 @@ export const SelectLogo: FC<SelectLogoProps> = (props) => {
     function handleLogoModeChange(mode: LogoModes) {
         setLogoMode(mode);
 
-        if (typeof onChange === "function") {
-            onChange({ logo: "" });
-        }
-
-        if (mode === "simpleIcons") {
-            //
+        if (mode === "none") {
+            if (typeof onChange === "function") {
+                onChange({ logo: "", logoColor: "" });
+            }
+        } else if (mode === "simpleIcons") {
+            if (typeof onChange === "function") {
+                onChange({ logo: "" });
+            }
         } else if (mode === "custom") {
-            //
+            if (typeof onChange === "function") {
+                onChange({ logo: "" });
+            }
         }
     }
 
@@ -48,9 +52,14 @@ export const SelectLogo: FC<SelectLogoProps> = (props) => {
                 onModeChange={handleLogoModeChange}
                 onIconChange={handleIconChange}
             />
-            <BadgeColorPicker fluid onChange={handleLogoColorChange} style={{ marginTop: "1rem" }}>
-                Select Icon Color
-            </BadgeColorPicker>
+            {logoMode !== "none" ? (
+                <BadgeColorPicker
+                    fluid
+                    onChange={handleLogoColorChange}
+                    style={{ marginTop: "1rem" }}>
+                    Select Icon Color
+                </BadgeColorPicker>
+            ) : null}
         </Segment>
     );
 };
