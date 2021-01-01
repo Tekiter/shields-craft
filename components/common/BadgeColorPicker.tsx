@@ -1,4 +1,4 @@
-import { CSSProperties, EffectCallback, FC, ReactNode, useEffect, useState } from "react";
+import { CSSProperties, FC, ReactNode, useEffect, useState } from "react";
 import { ColorChangeHandler, SketchPicker } from "react-color";
 import { Button, Popup, ButtonProps } from "semantic-ui-react";
 import Color from "color";
@@ -37,7 +37,7 @@ export interface BadgeColorPickerProps {
 }
 
 export const BadgeColorPicker: FC<BadgeColorPickerProps> = (props: BadgeColorPickerProps) => {
-    const [color, setColor] = useState(null);
+    const [color, setColor] = useState(Color("#000000").hex());
 
     const handleChange: ColorChangeHandler = (color) => {
         setColor(color.hex);
@@ -55,7 +55,7 @@ export const BadgeColorPicker: FC<BadgeColorPickerProps> = (props: BadgeColorPic
             const col = Color("#" + props.color);
             setColor(() => col.hex());
         } catch (_) {
-            //
+            setColor(() => Color("#000000").hex());
         }
     }, [props.color]);
 
