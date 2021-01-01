@@ -124,5 +124,10 @@ export function beautifyColor(color: string): string {
     if (badgeColorsRev[color] !== undefined) {
         return badgeColorsRev[color];
     }
+
+    if (color.startsWith("#")) {
+        return color.slice(1);
+    }
+
     return color;
 }
