@@ -39,7 +39,7 @@ export const ExportBadge: React.FC<ExportBadgeProps> = (props: ExportBadgeProps)
 
     const handleCopy = () => {
         if (url !== "") {
-            copy(url);
+            copy(currentType.converter(url, alt));
         }
     };
 

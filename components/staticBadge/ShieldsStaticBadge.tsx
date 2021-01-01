@@ -19,7 +19,7 @@ export const ShieldsStaticBadge = forwardRef<HTMLImageElement, ShieldsBadgeProps
         ...styles
     };
 
-    const badgeURL = staticBadge(badge);
+    const badgeURL = staticBadge(badge).url;
 
     if (onRequest && onRequest instanceof Function) {
         onRequest({ url: badgeURL });

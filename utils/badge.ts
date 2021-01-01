@@ -48,7 +48,12 @@ function escapeParam(value: string): string {
     return s;
 }
 
-export function staticBadge(badge: StaticBadge): string {
+export interface CreatedBadge {
+    url: string;
+    alt: string;
+}
+
+export function staticBadge(badge: StaticBadge): CreatedBadge {
     let { label = "", message = "", color = "blue", ...styles } = badge;
     label = escapeParam(label);
     message = escapeParam(message);
@@ -71,7 +76,15 @@ export function staticBadge(badge: StaticBadge): string {
         url += `?${query}`;
     }
 
-    return url;
+    let alt = message;
+    if (label !== "") {
+        alt = label + " " + alt;
+    }
+
+    return {
+        url,
+        alt
+    };
 }
 
 export const badgeColors: ReadonlyArray<{ key: string; color: string }> = [
