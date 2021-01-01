@@ -5,6 +5,8 @@
 [![GitHub issues](https://img.shields.io/github/issues/Tekiter/shields-craft?style=flat-square)](https://github.com/Tekiter/shields-craft/issues)
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FTekiter%2Fshields-craft&count_bg=%2368AA4C&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=true)](https://hits.seeyoufarm.com)
 
+[![](https://img.shields.io/badge/-Storybook-ff4785?logo=Storybook&logoColor=white&style=flat-square)](https://tekiter.github.io/shields-craft/storybook)
+
 **Shields Craft** 를 사용하면 [Shields.io](http://shields.io/) 뱃지를 쉽게 만들 수 있습니다.
 
 -   [English](README.md)
