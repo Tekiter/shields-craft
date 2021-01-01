@@ -1,10 +1,9 @@
 import { Menu } from "semantic-ui-react";
-import { Visible } from "@/components/misc/Visible";
 import { SimpleIconsPicker } from "@/components/panels/logo/SimpleIconPicker";
 import { FC } from "react";
 import { CustomIconPicker } from "./CustomIconPicker";
 
-export type LogoModes = "simpleIcons" | "custom";
+export type LogoModes = "none" | "simpleIcons" | "custom";
 
 export interface LogoPickerProps {
     mode?: LogoModes;
@@ -34,7 +33,9 @@ export const LogoPicker: FC<LogoPickerProps> = (props) => {
     }
 
     const currentPicker = (() => {
-        if (mode === "simpleIcons") {
+        if (mode === "none") {
+            return <></>;
+        } else if (mode === "simpleIcons") {
             return <SimpleIconsPicker onChange={handleSimpleIconsChange} />;
         } else if (mode === "custom") {
             return <CustomIconPicker onChange={handleCustomIconChange} />;
@@ -43,7 +44,12 @@ export const LogoPicker: FC<LogoPickerProps> = (props) => {
 
     return (
         <div>
-            <Menu pointing widths={2}>
+            <Menu widths={3}>
+                <Menu.Item
+                    name="None"
+                    active={mode === "none"}
+                    onClick={() => handleModeChange("none")}
+                />
                 <Menu.Item
                     name="Simple Icons"
                     active={mode === "simpleIcons"}
@@ -55,13 +61,6 @@ export const LogoPicker: FC<LogoPickerProps> = (props) => {
                     onClick={() => handleModeChange("custom")}
                 />
             </Menu>
-            {/* <Visible visible={mode === "simpleIcons"}>
-                <SimpleIconsPicker onChange={handleSimpleIconsChange} />
-            </Visible>
-
-            <Visible visible={mode === "custom"}>
-                <CustomIconPicker onChange={handleCustomIconChange} />
-            </Visible> */}
             {currentPicker}
         </div>
     );

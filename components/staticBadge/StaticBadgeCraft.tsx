@@ -16,11 +16,13 @@ interface ExportModalProps {
 }
 
 const ExportModal = (props: ExportModalProps) => {
+    const createdBadge = staticBadge(props.badge);
+
     return (
         <Modal open={props.open} onOpen={props.onOpen} onClose={props.onClose}>
             <Modal.Header>Export badge</Modal.Header>
             <Modal.Content>
-                <ExportBadge url={staticBadge(props.badge)} />
+                <ExportBadge url={createdBadge.url} alt={createdBadge.alt} />
             </Modal.Content>
         </Modal>
     );
