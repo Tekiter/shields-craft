@@ -51,8 +51,9 @@ export const StaticContent = forwardRef<Element, StaticContentProps>(
             if (checked) {
                 setOnlyMessage(true);
                 setLabel("");
+
                 if (typeof onChange === "function") {
-                    onChange({ label: "" });
+                    onChange({ label: "", labelColor: "555555" });
                 }
             } else {
                 setOnlyMessage(false);
