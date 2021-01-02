@@ -9,8 +9,7 @@
 
 **Shields Craft** 를 사용하면 [Shields.io](http://shields.io/) 뱃지를 쉽게 만들 수 있습니다.
 
--   [English](README.md)
--   [한국어](README.ko.md)
+| [English](README.md) | [한국어](README.ko.md) |
 
 ## 시작하기
 

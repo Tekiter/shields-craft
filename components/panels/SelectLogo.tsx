@@ -1,7 +1,9 @@
 import { FC, useState } from "react";
 import { Segment } from "semantic-ui-react";
-import { LogoModes, LogoPicker } from "@/components/panels/logo/LogoPicker";
+import { LogoMode, LogoPicker } from "@/components/panels/logo/LogoPicker";
 import { BadgeColorPicker } from "../common/BadgeColorPicker";
+import { SimpleIconsPicker } from "./logo/SimpleIconPicker";
+import { CustomIconPicker } from "./logo/CustomIconPicker";
 
 export interface SelectLogoProps {
     onChange: (e: { [key: string]: string }) => void;
@@ -13,23 +15,54 @@ export interface SelectLogoProps {
 export const SelectLogo: FC<SelectLogoProps> = (props) => {
     let { onChange } = props;
 
-    const [logoMode, setLogoMode] = useState<LogoModes>("simpleIcons");
+    const [logoMode, setLogoMode] = useState<number>(0);
 
-    function handleLogoModeChange(mode: LogoModes) {
-        setLogoMode(mode);
+    const modes: LogoMode[] = [
+        {
+            key: "none",
+            name: "None",
+            render: () => <></>,
+            point: false
+        },
+        {
+            key: "simpleIcons",
+            name: "Simple Icons",
+            render: () => (
+                <>
+                    <SimpleIconsPicker onChange={handleIconChange} />
+                    <BadgeColorPicker
+                        fluid
+                        onChange={handleLogoColorChange}
+                        style={{ marginTop: "1rem" }}>
+                        Select Icon Color
+                    </BadgeColorPicker>
+                </>
+            ),
+            point: true
+        },
+        {
+            key: "custom",
+            name: "Custom",
+            render: () => (
+                <>
+                    <CustomIconPicker onChange={handleIconChange} />
+                    <BadgeColorPicker
+                        fluid
+                        onChange={handleLogoColorChange}
+                        style={{ marginTop: "1rem" }}>
+                        Select Icon Color
+                    </BadgeColorPicker>
+                </>
+            ),
+            point: true
+        }
+    ];
 
-        if (mode === "none") {
-            if (typeof onChange === "function") {
-                onChange({ logo: "", logoColor: "" });
-            }
-        } else if (mode === "simpleIcons") {
-            if (typeof onChange === "function") {
-                onChange({ logo: "" });
-            }
-        } else if (mode === "custom") {
-            if (typeof onChange === "function") {
-                onChange({ logo: "" });
-            }
+    function handleLogoModeChange(idx: number) {
+        if (idx !== logoMode) {
+            onChange({ logo: "", logoColor: "" });
+
+            setLogoMode(idx);
         }
     }
 
@@ -47,19 +80,7 @@ export const SelectLogo: FC<SelectLogoProps> = (props) => {
 
     return (
         <Segment basic>
-            <LogoPicker
-                mode={logoMode}
-                onModeChange={handleLogoModeChange}
-                onIconChange={handleIconChange}
-            />
-            {logoMode !== "none" ? (
-                <BadgeColorPicker
-                    fluid
-                    onChange={handleLogoColorChange}
-                    style={{ marginTop: "1rem" }}>
-                    Select Icon Color
-                </BadgeColorPicker>
-            ) : null}
+            <LogoPicker currentMode={logoMode} modes={modes} onModeChange={handleLogoModeChange} />
         </Segment>
     );
 };

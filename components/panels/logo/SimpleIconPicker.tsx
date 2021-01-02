@@ -91,7 +91,7 @@ const IconButton: FC<IconButtonProps> = (props) => {
             onClick={handleClick}
             style={{
                 width: "10rem",
-                height: "6.5rem",
+                minHeight: "6.5rem",
                 marginBottom: "0.4rem",
                 marginRight: "0.3rem",
                 backgroundColor: resBackColor,

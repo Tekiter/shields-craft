@@ -9,8 +9,7 @@
 
 **Shields Craft** helps to create [Shields.io](http://shields.io/) badges easily.
 
--   [English](README.md)
--   [한국어](README.ko.md)
+| [English](README.md) | [한국어](README.ko.md) |
 
 ## Getting Started
 

@@ -26,11 +26,11 @@ function HeadingArea() {
                 <TitleImage style={{ height: "7rem", width: "auto", maxWidth: "80vw" }} />
             </Header>
             <Header as="h3" style={{ marginBottom: "2rem" }}>
-                Help creating styled{" "}
+                Create{" "}
                 <a href="https://shields.io/" target="_blank" rel="noreferrer">
                     Shields.io
                 </a>{" "}
-                badge.
+                badges easily.
             </Header>
 
             <GithubCorner
@@ -84,6 +84,7 @@ export default function Home(): ReactElement {
         <div>
             <Head>
                 <title>{TITLE}</title>
+                <meta name="description" content="Create Shields.io badges easily." />
             </Head>
 
             <HeadingArea />
