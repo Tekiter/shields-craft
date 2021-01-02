@@ -14,7 +14,8 @@ const ColoredButton: FC<ColoredButtonProps> = (props) => {
         <Button
             className="colorbtn"
             {...btnProps}
-            style={{ backgroundColor: color, color: Color(color).isDark() ? "white" : "black" }}>
+            style={{ backgroundColor: color, color: Color(color).isDark() ? "white" : "black" }}
+            tabIndex="-1">
             {props.children}
         </Button>
     );

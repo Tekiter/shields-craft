@@ -59,7 +59,11 @@ export const SelectLogo: FC<SelectLogoProps> = (props) => {
     ];
 
     function handleLogoModeChange(idx: number) {
-        setLogoMode(idx);
+        if (idx !== logoMode) {
+            onChange({ logo: "", logoColor: "" });
+
+            setLogoMode(idx);
+        }
     }
 
     function handleIconChange(logo: string) {
