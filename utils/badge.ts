@@ -43,7 +43,6 @@ function escapeParam(value: string): string {
     let s = encodeURIComponent(value);
     s = s.replace(/-/g, "--");
     s = s.replace(/_/g, "__");
-    s = s.replace(/%20/g, " ");
 
     return s;
 }
