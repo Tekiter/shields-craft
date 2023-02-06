@@ -7,6 +7,7 @@ module.exports = {
         "@storybook/addon-essentials",
         "storybook-addon-next-router"
     ],
+    framework: "@storybook/react",
     webpackFinal: async (config) => {
         config.resolve.modules = [
             ...(config.resolve.modules || []),
@@ -18,8 +19,12 @@ module.exports = {
 
         return config;
     },
+
     babel: async (options) => ({
         ...options,
         plugins: [...options.plugins, "styled-jsx/babel"]
-    })
+    }),
+    core: {
+        builder: "@storybook/builder-webpack5"
+    }
 };
