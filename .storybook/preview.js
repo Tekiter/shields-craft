@@ -1,9 +1,9 @@
-import { withNextRouter } from "storybook-addon-next-router";
-import { addDecorator } from "@storybook/react";
 import "semantic-ui-css/semantic.min.css";
+import { RouterContext } from "next/dist/shared/lib/router-context";
 
 export const parameters = {
-    actions: { argTypesRegex: "^on[A-Z].*" }
+    actions: { argTypesRegex: "^on[A-Z].*" },
+    nextRouter: {
+        Provider: RouterContext.Provider
+    }
 };
-
-addDecorator(withNextRouter({}));
