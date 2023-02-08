@@ -7,6 +7,7 @@ import { BadgeResult } from "@/src/components/common/BadgeResult";
 import { ShieldsStaticBadge } from "./ShieldsStaticBadge";
 import { ExportBadge } from "../common/ExportResult";
 import { SelectLogo } from "../panels/SelectLogo";
+import { useThrottledValue } from "@/src/utils/throttle";
 
 interface ExportModalProps {
     open?: boolean;
@@ -43,6 +44,7 @@ export const StaticBadgeCraft = forwardRef<HTMLElement, StaticBadgeCraftProps>((
     }));
 
     const [isExportOpen, setIsExportOpen] = useState(false);
+    const throttledBadge = useThrottledValue(badge);
 
     const handleChange = (values: object) => {
         onChange({ ...badge, ...values });
@@ -54,7 +56,7 @@ export const StaticBadgeCraft = forwardRef<HTMLElement, StaticBadgeCraftProps>((
             <Grid.Row centered>
                 <Grid.Column>
                     <BadgeResult
-                        badge={() => <ShieldsStaticBadge {...badge} />}
+                        badge={() => <ShieldsStaticBadge {...throttledBadge} />}
                         onExport={() => setIsExportOpen(true)}
                     />
                     <ExportModal

@@ -34,7 +34,7 @@
         "@storybook/manager-webpack5": "^6.5.16",
         "@storybook/react": "^6.5.16",
         "@types/node": "^14.14.13",
-        "@types/react": "^17.0.0",
+        "@types/react": "^18.0.27",
         "@types/simple-icons": "^2.5.0",
         "@typescript-eslint/eslint-plugin": "^4.10.0",
         "@typescript-eslint/parser": "^4.10.0",
