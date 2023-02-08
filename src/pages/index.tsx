@@ -2,7 +2,7 @@ import Head from "next/head";
 import { CSSProperties, ReactElement } from "react";
 import { StaticBadgeCraft } from "@/src/components/staticBadge/StaticBadgeCraft";
 import { Container, Header, List, Segment } from "semantic-ui-react";
-import githubIcon from "simple-icons/icons/github";
+import { siGithub } from "simple-icons";
 import GithubCorner from "react-github-corner";
 import { SVGIcon } from "@/src/components/misc/SVGIcon";
 import { useRouter } from "next/router";
@@ -58,7 +58,7 @@ function FooterArea() {
                 <List link inverted>
                     <List.Item as="a" href="https://github.com/Tekiter/shields-craft">
                         <SVGIcon
-                            svg={githubIcon.svg}
+                            svg={siGithub.svg}
                             height="1em"
                             width="1em"
                             style={{ marginRight: "0.3em" }}

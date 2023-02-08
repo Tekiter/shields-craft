@@ -22,7 +22,7 @@
         "react-github-corner": "^2.5.0",
         "semantic-ui-css": "^2.5.0",
         "semantic-ui-react": "^2.1.4",
-        "simple-icons": "^4.3.0",
+        "simple-icons": "^8.4.0",
         "styled-jsx": "^3.3.2"
     },
     "devDependencies": {

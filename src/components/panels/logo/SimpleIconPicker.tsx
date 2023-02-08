@@ -11,80 +11,37 @@ import {
     Visibility,
     VisibilityEventData
 } from "semantic-ui-react";
+import type { SimpleIcon } from "simple-icons";
 
 interface SimpleIconMeta {
-    title: string;
-    hex: string;
-    source: string;
-}
-
-interface SimpleIconMeta {
-    skey?: string;
-}
-
-interface SimpleIcon {
-    svg: string;
-}
-
-async function simpleIcons(name: string): Promise<SimpleIcon> {
-    return (await import("simple-icons")).default[name];
+    key: string;
+    skey: string;
+    icon: SimpleIcon;
 }
 
 function makeSearchKey(str: string) {
     return str.replace(/-/g, "").toLowerCase();
 }
 
-async function getIconList() {
-    let icons: Array<SimpleIconMeta>;
-    try {
-        icons = (await import("simple-icons/_data/simple-icons.json")).default.icons;
-    } catch {
-        const r = await fetch(
-            "https://rawcdn.githack.com/simple-icons/simple-icons/7dce90587ba42f60b54ea64f3bedd237d1f6cbe7/_data/simple-icons.json"
-        );
-        icons = (await r.json()).icons;
-    }
-    icons.sort((a, b) => {
-        return (
-            Color("#" + b.hex)
-                .hsl()
-                .hue() -
-            Color("#" + a.hex)
-                .hsl()
-                .hue()
-        );
-    });
-    return icons;
-}
-
 interface IconButtonProps {
     name: string;
+    svg: string;
     selected?: boolean;
     color?: string;
     onClick?: (name: string) => void;
 }
 
 const IconButton: FC<IconButtonProps> = (props) => {
-    const { name, selected = false, color = undefined, onClick } = props;
-
-    const [iconSVG, setIconSVG] = useState("");
+    const { svg, name, selected = false, color = undefined, onClick } = props;
 
     function handleClick() {
         onClick(name);
     }
 
-    useEffect(() => {
-        (async () => {
-            const icon = (await simpleIcons(name)).svg;
-
-            setIconSVG(icon);
-        })();
-    }, []);
-
     const resBackColor = color === undefined ? "" : "#" + color;
     const resColor = Color(resBackColor).isDark() ? "white" : "black";
 
-    const icon = <SVGIcon svg={iconSVG} color={resColor} style={{ margin: "0 auto" }} />;
+    const icon = <SVGIcon svg={svg} color={resColor} style={{ margin: "0 auto" }} />;
 
     return (
         <Button
@@ -99,7 +56,7 @@ const IconButton: FC<IconButtonProps> = (props) => {
             }}
             disabled={selected}>
             <Transition
-                visible={iconSVG !== ""}
+                visible={svg !== ""}
                 animation="fade"
                 duration={300}
                 style={{ display: "inline-block" }}>
@@ -166,11 +123,21 @@ export const SimpleIconsPicker: FC<SimpleIconsPickerProps> = (props: SimpleIcons
 
     useEffect(() => {
         (async function () {
-            const icons = await getIconList();
-            icons.forEach((icon) => {
-                icon.skey = makeSearchKey(icon.title);
+            const icnMap = (await import("simple-icons")).default;
+            let icons = Object.entries(icnMap);
+            icons.sort((a, b) => {
+                return (
+                    Color("#" + b[1].hex)
+                        .hsl()
+                        .hue() -
+                    Color("#" + a[1].hex)
+                        .hsl()
+                        .hue()
+                );
             });
-            setIconList(() => icons);
+            setIconList(
+                icons.map(([key, icon]) => ({ key, icon, skey: makeSearchKey(icon.title) }))
+            );
         })();
     }, []);
 
@@ -180,12 +147,10 @@ export const SimpleIconsPicker: FC<SimpleIconsPickerProps> = (props: SimpleIcons
 
     const handleChange = (value: string) => () => {
         setSelected(value);
-        if (typeof props.onChange === "function") {
-            props.onChange(value);
-        }
+        props.onChange?.(value);
     };
 
-    function handleSearch(e) {
+    function handleSearch(e: { target: { value: string } }) {
         setSearch(e.target.value);
     }
 
@@ -207,10 +172,11 @@ export const SimpleIconsPicker: FC<SimpleIconsPickerProps> = (props: SimpleIcons
             <Segment basic style={{ height: "21rem", overflow: "auto" }}>
                 <InfiniteScroll
                     data={filteredIconList}
-                    render={(icon) => (
+                    render={({ key, icon }) => (
                         <IconButton
-                            key={icon.title}
+                            key={key}
                             name={icon.title}
+                            svg={icon.svg}
                             color={icon.hex}
                             selected={icon.title == selected}
                             onClick={handleChange(icon.title)}
