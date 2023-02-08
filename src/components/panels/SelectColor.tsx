@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Grid, Segment } from "semantic-ui-react";
-import { BadgeColorPicker } from "@/components/common/BadgeColorPicker";
+import { BadgeColorPicker } from "@/src/components/common/BadgeColorPicker";
 
 type colorTypes = "labelColor" | "color";
 

@@ -1,10 +1,10 @@
 import Head from "next/head";
 import { CSSProperties, ReactElement } from "react";
-import { StaticBadgeCraft } from "@/components/staticBadge/StaticBadgeCraft";
+import { StaticBadgeCraft } from "@/src/components/staticBadge/StaticBadgeCraft";
 import { Container, Header, List, Segment } from "semantic-ui-react";
 import githubIcon from "simple-icons/icons/github";
 import GithubCorner from "react-github-corner";
-import { SVGIcon } from "@/components/misc/SVGIcon";
+import { SVGIcon } from "@/src/components/misc/SVGIcon";
 import { useRouter } from "next/router";
 
 const TITLE = "Shields Craft";

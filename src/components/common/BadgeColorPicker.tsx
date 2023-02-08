@@ -2,7 +2,7 @@ import { CSSProperties, FC, ReactNode, useEffect, useState } from "react";
 import { ColorChangeHandler, SketchPicker } from "react-color";
 import { Button, Popup, ButtonProps } from "semantic-ui-react";
 import Color from "color";
-import { badgeColors } from "@/utils/badge";
+import { badgeColors } from "@/src/utils/badge";
 
 interface ColoredButtonProps extends Omit<ButtonProps, "color"> {
     color?: string;

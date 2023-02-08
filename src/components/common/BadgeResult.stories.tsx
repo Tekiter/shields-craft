@@ -1,6 +1,6 @@
 import { Meta, Story } from "@storybook/react/types-6-0";
 import { BadgeResult, BadgeResultProps } from "./BadgeResult";
-import { ShieldsStaticBadge } from "@/components/staticBadge/ShieldsStaticBadge";
+import { ShieldsStaticBadge } from "@/src/components/staticBadge/ShieldsStaticBadge";
 
 export default {
     title: "Common/Badge Result",

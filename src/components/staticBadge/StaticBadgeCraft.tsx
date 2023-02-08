@@ -1,9 +1,9 @@
 import { forwardRef, useState } from "react";
 import { Grid, Header, Modal, Segment } from "semantic-ui-react";
-import { SelectStyleType } from "@/components/panels/SelectStyleType";
-import { StaticContent } from "@/components/panels/StaticContent";
-import { staticBadge, StaticBadge } from "@/utils/badge";
-import { BadgeResult } from "@/components/common/BadgeResult";
+import { SelectStyleType } from "@/src/components/panels/SelectStyleType";
+import { StaticContent } from "@/src/components/panels/StaticContent";
+import { staticBadge, StaticBadge } from "@/src/utils/badge";
+import { BadgeResult } from "@/src/components/common/BadgeResult";
 import { ShieldsStaticBadge } from "./ShieldsStaticBadge";
 import { ExportBadge } from "../common/ExportResult";
 import { SelectLogo } from "../panels/SelectLogo";

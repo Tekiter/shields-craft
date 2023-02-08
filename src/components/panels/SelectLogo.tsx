@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { Segment } from "semantic-ui-react";
-import { LogoMode, LogoPicker } from "@/components/panels/logo/LogoPicker";
+import { LogoMode, LogoPicker } from "@/src/components/panels/logo/LogoPicker";
 import { BadgeColorPicker } from "../common/BadgeColorPicker";
 import { SimpleIconsPicker } from "./logo/SimpleIconPicker";
 import { CustomIconPicker } from "./logo/CustomIconPicker";

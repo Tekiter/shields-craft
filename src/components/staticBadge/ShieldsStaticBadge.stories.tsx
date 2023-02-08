@@ -1,5 +1,5 @@
 import { Meta, Story } from "@storybook/react/types-6-0";
-import { StaticBadge } from "@/utils/badge";
+import { StaticBadge } from "@/src/utils/badge";
 import { ShieldsStaticBadge, ShieldsBadgeProps } from "./ShieldsStaticBadge";
 
 export default {

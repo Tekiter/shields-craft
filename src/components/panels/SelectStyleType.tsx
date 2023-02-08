@@ -1,4 +1,4 @@
-import { badgeStyleList, BadgeStylesTypes } from "@/utils/badge";
+import { badgeStyleList, BadgeStylesTypes } from "@/src/utils/badge";
 import React, { forwardRef, useCallback, useEffect, useState } from "react";
 import { Grid, Menu, Segment } from "semantic-ui-react";
 import { useRouter } from "next/router";

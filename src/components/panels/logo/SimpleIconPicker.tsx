@@ -1,6 +1,6 @@
 import Color from "color";
-import { WrapBox } from "@/components/misc/WrapBox";
-import { SVGIcon } from "@/components/misc/SVGIcon";
+import { WrapBox } from "@/src/components/misc/WrapBox";
+import { SVGIcon } from "@/src/components/misc/SVGIcon";
 import { FC, ReactNode, useCallback, useEffect, useMemo, useState } from "react";
 import {
     Button,
